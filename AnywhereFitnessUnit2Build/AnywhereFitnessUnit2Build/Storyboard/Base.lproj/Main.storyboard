@@ -54,9 +54,6 @@
                                             <constraint firstAttribute="height" constant="50" id="Qh6-qu-ydt"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
-                                        <connections>
-                                            <segue destination="yIh-Pr-Xf4" kind="show" id="T0u-cx-ZWp"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -102,7 +99,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WG1-hn-gMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="355" y="-66"/>
+            <point key="canvasLocation" x="-423" y="-112"/>
         </scene>
         <!--Client View Controller-->
         <scene sceneID="zit-o1-ska">
@@ -722,6 +719,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="PLO-aO-UOd"/>
-        <segue reference="qKX-zf-Wv0"/>
+        <segue reference="ImP-lL-27A"/>
     </inferredMetricsTieBreakers>
 </document>
