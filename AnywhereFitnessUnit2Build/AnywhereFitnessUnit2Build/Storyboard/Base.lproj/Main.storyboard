@@ -194,6 +194,7 @@
                                 </constraints>
                                 <state key="normal" title="DoneButton"/>
                                 <connections>
+                                    <action selector="dontButtonTapped:" destination="vjG-I8-zVz" eventType="touchUpInside" id="euS-gi-Ow3"/>
                                     <action selector="searchForAClassButtonTapped:" destination="SxF-fI-Uw1" eventType="touchUpInside" id="UH6-s9-ku8"/>
                                 </connections>
                             </button>
@@ -352,6 +353,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="xcc-rk-xe2"/>
                     </view>
+                    <connections>
+                        <outlet property="categoryLabel" destination="SrU-m0-9I9" id="F7I-C9-Pta"/>
+                        <outlet property="classLabel" destination="SR0-uk-MQS" id="Zds-My-Qzn"/>
+                        <outlet property="dateLabel" destination="6ln-7P-PXK" id="0RY-g7-bBF"/>
+                        <outlet property="doneButton" destination="nLW-jH-9Yj" id="wGL-pZ-VhF"/>
+                        <outlet property="durationLabel" destination="4Fg-5e-dno" id="52G-Gd-V4O"/>
+                        <outlet property="intensityLabel" destination="ge9-Gg-IFn" id="1Mc-A3-2tA"/>
+                        <outlet property="locationLabel" destination="Fmm-fH-QZi" id="wSD-mh-mYt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKx-bf-8rA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -376,7 +386,7 @@
                                     <action selector="searchForAClassButtonTapped:" destination="yIh-Pr-Xf4" eventType="touchUpInside" id="zIH-MY-hnc"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create a classpack!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZG-FT-5XI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a classpack!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZG-FT-5XI">
                                 <rect key="frame" x="40" y="101" width="334" height="28"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
                                 <nil key="textColor"/>
@@ -419,6 +429,7 @@
                     </view>
                     <connections>
                         <outlet property="doneButton" destination="nsl-ru-bDq" id="w45-Cc-81D"/>
+                        <outlet property="searchBar" destination="JaB-UL-yO5" id="xUW-h4-25a"/>
                         <outlet property="searchTableView" destination="Jyb-RM-z1v" id="Xaz-5L-cqc"/>
                     </connections>
                 </viewController>
@@ -464,6 +475,7 @@
                                 </constraints>
                                 <state key="normal" title="CreateAClassPack"/>
                                 <connections>
+                                    <action selector="createAClasssButtonTapped:" destination="SxF-fI-Uw1" eventType="touchUpInside" id="IFV-0x-sTd"/>
                                     <action selector="searchForAClassButtonTapped:" destination="SxF-fI-Uw1" eventType="touchUpInside" id="5TI-PH-Ej3"/>
                                     <segue destination="aPh-Be-flc" kind="presentation" identifier="TrainerCreateClassModalSegue" id="PLO-aO-UOd"/>
                                 </connections>
@@ -485,9 +497,10 @@
                         <viewLayoutGuide key="safeArea" id="7UJ-ea-uXG"/>
                     </view>
                     <connections>
+                        <outlet property="createAClassButton" destination="VPi-3q-X6n" id="qr9-np-9x1"/>
                         <outlet property="searchForAClassButton" destination="VPi-3q-X6n" id="48P-8y-MOk"/>
-                        <outlet property="tableView" destination="g4Q-70-fAx" id="Vh7-l3-CWx"/>
-                        <outlet property="welcomeLabel" destination="f6e-xW-TFZ" id="f4q-Fb-kIX"/>
+                        <outlet property="tableView" destination="g4Q-70-fAx" id="Lxb-hj-fwg"/>
+                        <outlet property="welcomeLabel" destination="f6e-xW-TFZ" id="sjJ-11-tZp"/>
                         <segue destination="rp2-pu-RLx" kind="presentation" identifier="TrainerLoginModalSegue" id="qKX-zf-Wv0"/>
                     </connections>
                 </viewController>
@@ -510,6 +523,7 @@
                                 </constraints>
                                 <state key="normal" title="DoneButton"/>
                                 <connections>
+                                    <action selector="doneButtonTapped:" destination="aPh-Be-flc" eventType="touchUpInside" id="Ke4-f3-NDg"/>
                                     <action selector="searchForAClassButtonTapped:" destination="SxF-fI-Uw1" eventType="touchUpInside" id="Ong-TX-BFw"/>
                                 </connections>
                             </button>
@@ -691,6 +705,15 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Opl-OV-MUO"/>
                     </view>
+                    <connections>
+                        <outlet property="categoryTextField" destination="x69-dx-6Ue" id="Xvd-wy-VqJ"/>
+                        <outlet property="classNameTextField" destination="XNW-US-7wl" id="HrQ-FO-G2S"/>
+                        <outlet property="dateTextField" destination="yye-IP-GSX" id="LER-g0-6JJ"/>
+                        <outlet property="doneButton" destination="qcx-Hx-5ag" id="JLP-CB-d1R"/>
+                        <outlet property="durationTextField" destination="5cy-4w-fxE" id="Hg7-ws-MYD"/>
+                        <outlet property="intensityTextField" destination="5El-0b-TsF" id="ona-tK-Eym"/>
+                        <outlet property="locationTextField" destination="N2B-fa-dwx" id="JRl-9l-WMQ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lT0-7h-W4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
