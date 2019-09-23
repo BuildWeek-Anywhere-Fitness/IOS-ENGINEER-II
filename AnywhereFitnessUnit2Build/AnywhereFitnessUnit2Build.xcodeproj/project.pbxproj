@@ -23,6 +23,7 @@
 		38B7E3362339716D00327162 /* TrainerCreateClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E3332339716D00327162 /* TrainerCreateClassViewController.swift */; };
 		38B7E3372339716D00327162 /* TrainerClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E3342339716D00327162 /* TrainerClassDetailViewController.swift */; };
 		38B7E3382339716D00327162 /* TrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E3352339716D00327162 /* TrainerViewController.swift */; };
+		F59CEA2B233984460090D819 /* ClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59CEA2A233984460090D819 /* ClassController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		38B7E3332339716D00327162 /* TrainerCreateClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerCreateClassViewController.swift; sourceTree = "<group>"; };
 		38B7E3342339716D00327162 /* TrainerClassDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerClassDetailViewController.swift; sourceTree = "<group>"; };
 		38B7E3352339716D00327162 /* TrainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerViewController.swift; sourceTree = "<group>"; };
+		F59CEA2A233984460090D819 /* ClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		38B7E329233970B200327162 /* Model Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				F59CEA2A233984460090D819 /* ClassController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				38B7E3322339715E00327162 /* ClientClassDetailViewController.swift in Sources */,
 				38B7E2B823393CC000327162 /* AppDelegate.swift in Sources */,
 				38B7E3232339599700327162 /* TrainerRepresentatation.swift in Sources */,
+				F59CEA2B233984460090D819 /* ClassController.swift in Sources */,
 				38B7E3372339716D00327162 /* TrainerClassDetailViewController.swift in Sources */,
 				38B7E3312339715E00327162 /* ClientViewController.swift in Sources */,
 				38B7E3382339716D00327162 /* TrainerViewController.swift in Sources */,
