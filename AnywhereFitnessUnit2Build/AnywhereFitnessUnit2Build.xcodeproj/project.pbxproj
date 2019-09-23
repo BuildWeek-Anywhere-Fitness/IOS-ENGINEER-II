@@ -155,8 +155,8 @@
 				38B7E31B23393FD500327162 /* ClientTrainerClass.xcdatamodeld */,
 				38B7E31E2339597700327162 /* Class+Convenience.swift */,
 				38B7E3202339598400327162 /* ClassRepresentation.swift */,
-				38B7E3222339599700327162 /* TrainerRepresentatation.swift */,
 				38B7E324233959B900327162 /* ClientRepresentation.swift */,
+				38B7E3222339599700327162 /* TrainerRepresentatation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
