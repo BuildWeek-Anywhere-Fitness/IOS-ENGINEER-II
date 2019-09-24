@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x1C-1n-N3d">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Client Search View Controller-->
+        <scene sceneID="5WP-aD-maE">
+            <objects>
+                <viewController id="x1C-1n-N3d" customClass="ClientSearchViewController" customModule="AnywhereFitnessUnit2Build" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QdS-w5-8hb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nsl-ru-bDq">
+                                <rect key="frame" x="40" y="777" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="8W4-fo-YYI"/>
+                                </constraints>
+                                <state key="normal" title="DoneButton"/>
+                                <connections>
+                                    <action selector="doneButtonTapped:" destination="x1C-1n-N3d" eventType="touchUpInside" id="OA4-8G-cQD"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a classpack!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZG-FT-5XI">
+                                <rect key="frame" x="40" y="101" width="334" height="28"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Jyb-RM-z1v">
+                                <rect key="frame" x="40" y="159" width="334" height="584"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="JaB-UL-yO5">
+                                    <rect key="frame" x="0.0" y="0.0" width="334" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SearchCell" id="b7f-jJ-lc8">
+                                        <rect key="frame" x="0.0" y="72" width="334" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="b7f-jJ-lc8" id="QcB-nH-04q">
+                                            <rect key="frame" x="0.0" y="0.0" width="334" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="KdK-hF-PFV" firstAttribute="trailing" secondItem="GZG-FT-5XI" secondAttribute="trailing" constant="40" id="BSI-a7-vQ6"/>
+                            <constraint firstItem="nsl-ru-bDq" firstAttribute="top" secondItem="Jyb-RM-z1v" secondAttribute="bottom" constant="34" id="HaC-A8-B5c"/>
+                            <constraint firstItem="GZG-FT-5XI" firstAttribute="top" secondItem="KdK-hF-PFV" secondAttribute="top" constant="57" id="LDw-31-ukC"/>
+                            <constraint firstItem="KdK-hF-PFV" firstAttribute="trailing" secondItem="Jyb-RM-z1v" secondAttribute="trailing" constant="40" id="Nb1-MG-N62"/>
+                            <constraint firstItem="nsl-ru-bDq" firstAttribute="leading" secondItem="KdK-hF-PFV" secondAttribute="leading" constant="40" id="Uce-hH-DwX"/>
+                            <constraint firstItem="GZG-FT-5XI" firstAttribute="leading" secondItem="KdK-hF-PFV" secondAttribute="leading" constant="40" id="XXc-Lg-J7p"/>
+                            <constraint firstItem="KdK-hF-PFV" firstAttribute="trailing" secondItem="nsl-ru-bDq" secondAttribute="trailing" constant="40" id="a9H-7o-8oB"/>
+                            <constraint firstItem="KdK-hF-PFV" firstAttribute="bottom" secondItem="nsl-ru-bDq" secondAttribute="bottom" constant="35" id="bqb-Jy-LtX"/>
+                            <constraint firstItem="Jyb-RM-z1v" firstAttribute="top" secondItem="GZG-FT-5XI" secondAttribute="bottom" constant="30" id="maE-Fk-syn"/>
+                            <constraint firstItem="Jyb-RM-z1v" firstAttribute="leading" secondItem="KdK-hF-PFV" secondAttribute="leading" constant="40" id="opP-H0-DRt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KdK-hF-PFV"/>
+                    </view>
+                    <connections>
+                        <outlet property="doneButton" destination="nsl-ru-bDq" id="w45-Cc-81D"/>
+                        <outlet property="searchBar" destination="JaB-UL-yO5" id="xUW-h4-25a"/>
+                        <outlet property="searchTableView" destination="Jyb-RM-z1v" id="Xaz-5L-cqc"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GpE-Lt-ke1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="384" y="633"/>
+        </scene>
+    </scenes>
+</document>

@@ -9,6 +9,14 @@
 import UIKit
 
 class TrainerCreateClassViewController: UIViewController {
+    
+    var classController: ClassController?
+    
+    var categoryPicker: UIPickerView = UIPickerView()
+    var datePicker: UIPickerView = UIPickerView()
+    var durationPicker: UIPickerView = UIPickerView()
+    var intensityPicker: UIPickerView = UIPickerView()
+    
 
     @IBOutlet weak var classNameTextField: UITextField!
     @IBOutlet weak var categoryTextField: UITextField!
@@ -28,5 +36,30 @@ class TrainerCreateClassViewController: UIViewController {
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         
+        let date = Date()
+        
+        guard let name = classNameTextField.text,
+            let caegory = categoryTextField?.text,
+            let duration = durationTextField.text,
+            let intesity = intensityTextField.text,
+            let location = locationTextField.text else {return}
+        
+        classController?.createClass(with: name, location: location, intesityLevel: intesity, duration: duration, date: date, category: caegory)
+        
+        self.dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
     }
+}
+
+extension TrainerCreateClassViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        <#code#>
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        <#code#>
+    }
+    
+    
 }
