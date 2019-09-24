@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38A5CF31233A741D00A8F66F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF30233A741D00A8F66F /* SearchTableViewCell.swift */; };
 		38B7E2B823393CC000327162 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E2B723393CC000327162 /* AppDelegate.swift */; };
 		38B7E2BD23393CC000327162 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E2BB23393CC000327162 /* Main.storyboard */; };
 		38B7E2BF23393CC100327162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E2BE23393CC100327162 /* Assets.xcassets */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		38A5CF30233A741D00A8F66F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		38B7E2B423393CC000327162 /* AnywhereFitnessUnit2Build.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnywhereFitnessUnit2Build.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B7E2B723393CC000327162 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38B7E2BC23393CC000327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 		38B7E32A233970C000327162 /* Custom Views */ = {
 			isa = PBXGroup;
 			children = (
+				38A5CF30233A741D00A8F66F /* SearchTableViewCell.swift */,
 			);
 			path = "Custom Views";
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A5CF31233A741D00A8F66F /* SearchTableViewCell.swift in Sources */,
 				38B7E32C2339712600327162 /* CoreDataStack.swift in Sources */,
 				38B7E31F2339597700327162 /* Class+Convenience.swift in Sources */,
 				38B7E325233959B900327162 /* ClientRepresentation.swift in Sources */,
