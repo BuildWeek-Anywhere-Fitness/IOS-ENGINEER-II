@@ -30,6 +30,9 @@
 		38B7E342233993C100327162 /* TrainerClassDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E341233993C100327162 /* TrainerClassDetail.storyboard */; };
 		38B7E3452339944400327162 /* TrainerHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E3432339944400327162 /* TrainerHome.storyboard */; };
 		F59CEA2B233984460090D819 /* ClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59CEA2A233984460090D819 /* ClassController.swift */; };
+		F5B546B0233A7EEE001FA79A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B546AF233A7EEE001FA79A /* UserController.swift */; };
+		F5B546B2233A8971001FA79A /* Client+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B546B1233A8971001FA79A /* Client+Convenience.swift */; };
+		F5B546B4233A897A001FA79A /* Trainer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B546B3233A897A001FA79A /* Trainer+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,6 +61,9 @@
 		38B7E341233993C100327162 /* TrainerClassDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainerClassDetail.storyboard; sourceTree = "<group>"; };
 		38B7E3442339944400327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AnywhereFitnessUnit2Build/Storyboard/Base.lproj/TrainerHome.storyboard; sourceTree = "<group>"; };
 		F59CEA2A233984460090D819 /* ClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassController.swift; sourceTree = "<group>"; };
+		F5B546AF233A7EEE001FA79A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		F5B546B1233A8971001FA79A /* Client+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+Convenience.swift"; sourceTree = "<group>"; };
+		F5B546B3233A897A001FA79A /* Trainer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trainer+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +140,8 @@
 				38B7E3202339598400327162 /* ClassRepresentation.swift */,
 				38B7E324233959B900327162 /* ClientRepresentation.swift */,
 				38B7E3222339599700327162 /* TrainerRepresentatation.swift */,
+				F5B546B1233A8971001FA79A /* Client+Convenience.swift */,
+				F5B546B3233A897A001FA79A /* Trainer+Convenience.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -170,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				F59CEA2A233984460090D819 /* ClassController.swift */,
+				F5B546AF233A7EEE001FA79A /* UserController.swift */,
 			);
 			path = "Model Controllers";
 			sourceTree = "<group>";
@@ -269,8 +278,11 @@
 				38B7E3372339716D00327162 /* TrainerClassDetailViewController.swift in Sources */,
 				38B7E3312339715E00327162 /* ClientViewController.swift in Sources */,
 				38B7E3382339716D00327162 /* TrainerViewController.swift in Sources */,
+				F5B546B4233A897A001FA79A /* Trainer+Convenience.swift in Sources */,
+				F5B546B2233A8971001FA79A /* Client+Convenience.swift in Sources */,
 				38B7E3212339598400327162 /* ClassRepresentation.swift in Sources */,
 				38B7E3302339715E00327162 /* ClientSearchViewController.swift in Sources */,
+				F5B546B0233A7EEE001FA79A /* UserController.swift in Sources */,
 				38B7E3362339716D00327162 /* TrainerCreateClassViewController.swift in Sources */,
 				38B7E31D23393FD500327162 /* ClientTrainerClass.xcdatamodeld in Sources */,
 			);

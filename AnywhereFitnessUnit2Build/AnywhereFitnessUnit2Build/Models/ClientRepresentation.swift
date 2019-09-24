@@ -7,3 +7,14 @@
 //
 
 import Foundation
+
+struct ClientRepresentation: Equatable, Codable {
+	let username: String
+	let password: String
+	let email: String
+}
+
+
+struct UserResult: Codable {
+    var token: String
+}
