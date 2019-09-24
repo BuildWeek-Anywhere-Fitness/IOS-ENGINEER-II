@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rp2-pu-RLx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rp2-pu-RLx">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="4vH-ZO-VVd">
             <objects>
-                <viewController id="rp2-pu-RLx" sceneMemberID="viewController">
+                <viewController id="rp2-pu-RLx" customClass="LoginViewController" customModule="AnywhereFitnessUnit2Build" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vbD-QM-ikl">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="39" translatesAutoresizingMaskIntoConstraints="NO" id="Zd7-sY-MlZ">
@@ -22,7 +24,6 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="VjH-wl-VTW"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -31,16 +32,14 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="vbw-Di-dBm"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJi-8H-Skn">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZJi-8H-Skn">
                                         <rect key="frame" x="0.0" y="178" width="314" height="50"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="YDv-zC-KMn"/>
                                         </constraints>
-                                        <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -50,6 +49,9 @@
                                             <constraint firstAttribute="height" constant="50" id="Qh6-qu-ydt"/>
                                         </constraints>
                                         <state key="normal" title="Button"/>
+                                        <connections>
+                                            <action selector="loginButtonTapped:" destination="rp2-pu-RLx" eventType="touchUpInside" id="2cf-is-aDz"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -71,7 +73,7 @@
                                 </subviews>
                             </stackView>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8n9-Wi-Bjl">
-                                <rect key="frame" x="40" y="64" width="334" height="29"/>
+                                <rect key="frame" x="40" y="64" width="334" height="32"/>
                                 <segments>
                                     <segment title="Client"/>
                                     <segment title="Trainer"/>
@@ -92,6 +94,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GZ5-I6-O43"/>
                     </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="zPM-6A-9b9" id="cpG-dl-6rr"/>
+                        <outlet property="passwordTextField" destination="ZJi-8H-Skn" id="1m2-cl-hI8"/>
+                        <outlet property="segmentedControl" destination="8n9-Wi-Bjl" id="PeK-hX-TAd"/>
+                        <outlet property="usernameTextField" destination="B0Y-U3-Jgj" id="zog-cn-D5u"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WG1-hn-gMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

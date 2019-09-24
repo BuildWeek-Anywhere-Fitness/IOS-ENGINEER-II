@@ -15,6 +15,7 @@ enum NetworkError: Error {
 	case noData
 	case noDecode
 	case signUpError
+    case noToken
 }
 
 enum HTTPMethod: String {
@@ -36,7 +37,7 @@ class UserController {
 	
 	let baseURL = URL(string: "https://anywhere-health.herokuapp.com/api/users")!
 
-	func clientSignUp(with client: ClientRepresentation, loginType: LoginType, completion: @escaping (NetworkError?) -> (Void)) {
+	func clientSignUp(with client: ClientRepresentation, loginType: LoginType, completion: @escaping (Result<String, NetworkError>) -> (Void)) {
 		let signUpURL = baseURL.appendingPathComponent(loginType.rawValue)
 		
 		var request = URLRequest(url: signUpURL)
@@ -48,27 +49,27 @@ class UserController {
 			self.client = client
 		} catch {
 			NSLog("Error endoing user object: \(error)")
-			completion(.encodingError)
+            completion(.failure(.encodingError))
 			return
 		}
 		
 		URLSession.shared.dataTask(with: request) { (_, response, error) in
 			if let response = response as? HTTPURLResponse,
 				response.statusCode != 200 {
-				completion(.responseError)
+                completion(.failure(.responseError))
 				return
 			}
 			
 			if let error = error {
 				NSLog("Error signing client up: \(error)")
-				completion(.signUpError)
+                completion(.failure(.signUpError))
 				return
 			}
-			completion(nil)
+            completion(.success("login successful"))
 		}.resume()
 	}
 
-	func clientLogIn(with client: ClientRepresentation, loginType: LoginType, completion: @escaping (Error?) -> ()) {
+	func clientLogIn(with client: ClientRepresentation, loginType: LoginType, completion: @escaping (Result<String, NetworkError>) -> ()) {
 		let logInUrl = baseURL.appendingPathComponent(loginType.rawValue)
 		
 		var request = URLRequest(url: logInUrl)
@@ -78,7 +79,7 @@ class UserController {
 			request.httpBody = try JSONEncoder().encode(client)
 		} catch {
 			NSLog("Error encoding client object: \(error)")
-			completion(error)
+            completion(.failure(.encodingError))
 			return
 		}
 		
@@ -86,18 +87,18 @@ class UserController {
 			
 			if let response = response as? HTTPURLResponse,
 				response.statusCode != 200 {
-				completion(NSError())
+                completion(.success(""))
 				return
 			}
 			
 			if let error = error {
 				NSLog("Error logging in: \(error)")
-				completion(error)
+                completion(.failure(.otherError))
 				return
 			}
 			
 			guard let data = data else {
-				completion(NSError(domain: "No data recieved", code: -1, userInfo: nil))
+                completion(.failure(.noData))
 				return
 			}
 			
@@ -114,11 +115,11 @@ class UserController {
 							   try CoreDataStack.shared.save(context: context)
 							   if let token = self.token {
 								   KeychainWrapper.standard.set(token, forKey: "token")
-								   completion(.success(token))
+                                completion(.success("setting keychain wrapper"))
 							   }
 			} catch {
 				NSLog("Token not recieved: \(error)")
-				completion(error)
+                completion(.failure(.noToken))
 				return
 			}
 		}
