@@ -7,3 +7,19 @@
 //
 
 import Foundation
+
+struct ClassRepresentation: Equatable, Codable {
+	let name: String
+	let location: String
+	let date: Date
+	let duration: String
+	let intesityLevel: String
+	let category: String
+	let attendees: String
+	let identifier: Int
+		
+		enum CodingKeys: String, CodingKey {
+			case name = ""
+		}
+	
+}

@@ -45,7 +45,4 @@ extension Class {
 		self.location = location
 		
 	}
-	
-	
-	
 }
