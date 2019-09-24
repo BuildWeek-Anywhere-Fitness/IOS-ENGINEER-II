@@ -32,7 +32,7 @@ enum LoginType: String {
 
 class UserController {
 	
-	var token: String?
+	var id: Int?
 	var client: ClientRepresentation?
 	
 	let baseURL = URL(string: "https://anywhere-health.herokuapp.com/api/users")!
@@ -104,7 +104,7 @@ class UserController {
 			
 			do {
 				let result = try JSONDecoder().decode(UserResult.self, from: data)
-				self.token = result.token
+				self.id = result.id
 				self.client = client
 				let context = CoreDataStack.shared.mainContext
 							   
@@ -113,8 +113,8 @@ class UserController {
 							   }
 							   
 							   try CoreDataStack.shared.save(context: context)
-							   if let token = self.token {
-								   KeychainWrapper.standard.set(token, forKey: "token")
+							   if let token = self.id {
+								   KeychainWrapper.standard.set(token, forKey: "id")
                                 completion(.success("setting keychain wrapper"))
 							   }
 			} catch {

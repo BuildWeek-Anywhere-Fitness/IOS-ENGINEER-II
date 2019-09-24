@@ -71,13 +71,13 @@ class TrainerCreateClassViewController: UIViewController {
         let date = datePicker.date
         
         guard let name = classNameTextField.text,
-            let caegory = categoryTextField?.text,
+            let category = categoryTextField?.text,
             let duration = durationTextField.text,
             let intesity = intensityTextField.text,
             let location = locationTextField.text else {return}
         
-        classController?.createClass(with: name, location: location, intesityLevel: intesity, duration: duration, date: date, category: caegory)
-        
+            
+        classController?.createClass(with: name, location: location, intensityLevel: intesity, duration: duration, date: date, category: category, identifier: nil)
         self.dismiss(animated: true, completion: nil)
     }
 }
