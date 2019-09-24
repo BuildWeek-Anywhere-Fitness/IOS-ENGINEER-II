@@ -20,7 +20,7 @@ class CoreDataStack {
     // lazy doesn't initialize upone class initialization, it is only called when needed
     lazy var container: NSPersistentContainer = {
         
-        let container = NSPersistentContainer(name: "TrainerClientClass")
+        let container = NSPersistentContainer(name: "ClientTrainerClass")
         container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error {
                 fatalError("Core sata was unable to load persistence stores: \(error)")

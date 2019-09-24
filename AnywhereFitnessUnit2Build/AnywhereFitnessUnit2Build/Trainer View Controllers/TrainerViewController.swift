@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 
 class TrainerViewController: UIViewController {
+    
+    let classController = ClassController()
 	
 	lazy var fetch: NSFetchedResultsController<Class> = {
 		   
@@ -36,8 +38,12 @@ class TrainerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
     }
     
     @IBAction func createAClasssButtonTapped(_ sender: UIButton) {
@@ -45,8 +51,13 @@ class TrainerViewController: UIViewController {
     }
 	
 	// METHODS:
-	
-	
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TrainerCreateClassModalSegue" {
+            guard let destination = segue.destination as? TrainerCreateClassViewController else {return}
+            destination.classController = classController
+        }
+    }
     
 
 }
