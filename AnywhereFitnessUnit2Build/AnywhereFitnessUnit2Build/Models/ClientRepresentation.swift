@@ -16,5 +16,5 @@ struct ClientRepresentation: Equatable, Codable {
 
 
 struct UserResult: Codable {
-    var token: String
+    var id: Int
 }
