@@ -33,6 +33,8 @@ enum Intensity: String, CaseIterable {
 
 extension Class {
 	
+	
+	
 	@discardableResult convenience init?(name: String, category: Category, date: Date, duration: Duration, intensityLevel: Intensity, location: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		
 		self.init(context: context)
@@ -45,4 +47,24 @@ extension Class {
 		self.location = location
 		
 	}
+	
+	@discardableResult convenience init?(classRepresentation: ClassRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+		
+			let name = classRepresentation.name
+			let category = classRepresentation.category
+			let date = classRepresentation.date
+			let duration = classRepresentation.duration
+			let intensityLevel = classRepresentation.intesityLevel
+		let location = classRepresentation.location
+			
+        
+		self.init(name: name,
+				  category: Category(rawValue: category)!,
+				  date: date,
+				  duration: Duration(rawValue: duration)!,
+				  intensityLevel: Intensity(rawValue: intensityLevel)!,
+				  location: location,
+				  context: context)
+    }
+	
 }
