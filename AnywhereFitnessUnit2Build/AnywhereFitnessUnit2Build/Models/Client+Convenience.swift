@@ -15,7 +15,7 @@ extension Client {
 		guard let username = username,
 			let password = password,
 			let email = email else { return nil }
-        return ClientRepresentation(username: username, password: password, email: email)
+        return ClientRepresentation(email: email, username: username, password: password)
     }
 	
 	@discardableResult convenience init?(username: String, password: String, email: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {

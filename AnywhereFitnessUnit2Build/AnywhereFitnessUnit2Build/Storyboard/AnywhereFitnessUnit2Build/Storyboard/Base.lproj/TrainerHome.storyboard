@@ -11,7 +11,7 @@
         <!--Trainer View Controller-->
         <scene sceneID="0xq-cl-IEO">
             <objects>
-                <viewController id="SxF-fI-Uw1" customClass="TrainerViewController" customModule="AnywhereFitnessUnit2Build" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TrainerHome" id="SxF-fI-Uw1" customClass="TrainerViewController" customModule="AnywhereFitnessUnit2Build" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gwi-xb-jW3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

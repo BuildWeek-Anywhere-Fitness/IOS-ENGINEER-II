@@ -8,6 +8,10 @@
 
 import Foundation
 
+struct TrainerResult: Codable {
+    var token: String
+}
+
 struct TrainerRepresentation: Equatable, Codable {
 	let email: String
 	let username: String

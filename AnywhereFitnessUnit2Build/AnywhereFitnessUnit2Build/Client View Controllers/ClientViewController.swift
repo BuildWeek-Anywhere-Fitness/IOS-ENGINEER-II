@@ -40,7 +40,12 @@ class ClientViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        performSegue(withIdentifier: "ClientLoginModalSegue", sender: self)
+
     }
     
     @IBAction func searchForAClassButtonTapped(_ sender: UIButton) {
