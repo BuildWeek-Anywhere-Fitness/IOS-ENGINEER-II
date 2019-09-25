@@ -17,13 +17,13 @@ class ClientViewController: UIViewController {
     
     var classController = ClassController()
     
-    var classList: ClassList!
+    var classType: ClassType = ClassType.clientClasses
     
     lazy var fetch: NSFetchedResultsController<Class> = {
         
         let request: NSFetchRequest<Class> = Class.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
-        request.predicate = NSPredicate(format: "classList == clientClasses", classList)
+        request.predicate = NSPredicate(format: "classType == clientClasses")
         // basically sorts everything
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         

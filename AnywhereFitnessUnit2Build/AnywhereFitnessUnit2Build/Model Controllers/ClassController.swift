@@ -13,6 +13,7 @@ import CoreData
 class ClassController {
     
     var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
+    
     var dateFormatter: DateFormatter {
         let formatter = DateFormatter()
         formatter.dateFormat = "MMM dd, yyyy, h:mm a"
@@ -162,10 +163,6 @@ class ClassController {
                 
                 let classReprentations = try decoder.decode([ClassRepresentation].self, from: data)
                 // trying to aassigning the returned array to CoreData all classes
-                let allClasses = ClassList(name: "allClasses")
-                let set = NSOrderedSet(array: classReprentations)
-                allClasses?.addToClasses(set)
-                
                 self.updateClassOnCoreData(with: classReprentations)
             } catch {
                 NSLog("Error decoding: \(error)")
@@ -253,9 +250,9 @@ class ClassController {
     
     // Create
     
-    func createClass(with name: String, location: String, intensityLevel: Intensity, duration: Duration , date: Date, category: Category, classList: [ClassList]) {
+    func createClass(with name: String, location: String, intensityLevel: Intensity, duration: Duration , date: Date, category: Category, classType: ClassType) {
         
-        guard let classObject = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensityLevel, location: location, in: classList) else {return}
+        guard let classObject = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensityLevel, location: location, classType: classType) else {return}
         
         CoreDataStack.shared.save()
         put(class: classObject)
@@ -288,14 +285,4 @@ class ClassController {
     }
 }
 
-// MARK: TrainerClasses & ClientClasses Methods
 
-extension ClassController {
-    
-    @discardableResult func createClassList(with name: String) -> ClassList {
-        let classes = ClassList(name: name)!
-        CoreDataStack.shared.save()
-        return classes
-    }
-    
-}

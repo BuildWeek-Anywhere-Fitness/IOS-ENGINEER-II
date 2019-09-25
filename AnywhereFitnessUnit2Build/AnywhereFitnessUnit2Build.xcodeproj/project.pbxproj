@@ -46,6 +46,7 @@
 		38A5CF38233AADF500A8F66F /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 		38A5CF41233B41E400A8F66F /* ClientTrainerClass+ClassList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ClientTrainerClass+ClassList.xcdatamodel"; sourceTree = "<group>"; };
 		38A5CF42233B427800A8F66F /* ClassList+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassList+Convenience.swift"; sourceTree = "<group>"; };
+		38A5CF44233BC2FE00A8F66F /* ClientTrainerClass+ClassType.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ClientTrainerClass+ClassType.xcdatamodel"; sourceTree = "<group>"; };
 		38B7E2B423393CC000327162 /* AnywhereFitnessUnit2Build.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnywhereFitnessUnit2Build.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B7E2B723393CC000327162 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38B7E2BC23393CC000327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -154,8 +155,8 @@
 			isa = PBXGroup;
 			children = (
 				38B7E31B23393FD500327162 /* ClientTrainerClass.xcdatamodeld */,
-				38A5CF42233B427800A8F66F /* ClassList+Convenience.swift */,
 				38B7E31E2339597700327162 /* Class+Convenience.swift */,
+				38A5CF42233B427800A8F66F /* ClassList+Convenience.swift */,
 				38B7E3202339598400327162 /* ClassRepresentation.swift */,
 				38B7E324233959B900327162 /* ClientRepresentation.swift */,
 				38B7E3222339599700327162 /* TrainerRepresentatation.swift */,
@@ -538,10 +539,11 @@
 		38B7E31B23393FD500327162 /* ClientTrainerClass.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				38A5CF44233BC2FE00A8F66F /* ClientTrainerClass+ClassType.xcdatamodel */,
 				38A5CF41233B41E400A8F66F /* ClientTrainerClass+ClassList.xcdatamodel */,
 				38B7E31C23393FD500327162 /* ClientTrainerClass.xcdatamodel */,
 			);
-			currentVersion = 38A5CF41233B41E400A8F66F /* ClientTrainerClass+ClassList.xcdatamodel */;
+			currentVersion = 38A5CF44233BC2FE00A8F66F /* ClientTrainerClass+ClassType.xcdatamodel */;
 			path = ClientTrainerClass.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

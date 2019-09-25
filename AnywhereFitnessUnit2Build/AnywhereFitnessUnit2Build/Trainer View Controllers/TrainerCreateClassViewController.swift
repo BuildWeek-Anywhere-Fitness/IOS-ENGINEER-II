@@ -18,7 +18,6 @@ class TrainerCreateClassViewController: UIViewController {
         }
     }
     
-    var classList = ClassList()
     var category: Category?
     var intensity: Intensity?
     var duration: Duration?
@@ -71,19 +70,20 @@ class TrainerCreateClassViewController: UIViewController {
         
         let date = datePicker.date
         
+        let classType = ClassType.trainerClasses
+        
         guard let name = classNameTextField.text,
             let category = Category(rawValue: categoryTextField.text!),
             let duration = Duration(rawValue: durationTextField.text!),
             let intesity = Intensity(rawValue: intensityTextField.text!),
             let location = locationTextField.text,
-            let classList = ClassList.shared.trainerClasses,
             !name.isEmpty, !location.isEmpty
             else {return}
         
         if let classObject = classObject {
             classController?.updateClass(with: classObject, name: name, location: location, intesityLevel: intesity, duration: duration, date: date, category: category)
         } else {
-            classController?.createClass(with: name, location: location, intensityLevel: intesity, duration: duration, date: date, category: category, classList: [classList])
+            classController?.createClass(with: name, location: location, intensityLevel: intesity, duration: duration, date: date, category: category, classType: classType)
         }
         self.dismiss(animated: true, completion: nil)
     }

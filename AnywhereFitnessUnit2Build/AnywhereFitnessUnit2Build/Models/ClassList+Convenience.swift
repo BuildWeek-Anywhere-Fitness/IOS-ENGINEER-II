@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-extension ClassList {
+/*extension ClassList {
     
     static let shared = ClassList()
     
@@ -40,4 +40,4 @@ extension ClassList {
         
         self.name = name
     }
-}
+}*/
