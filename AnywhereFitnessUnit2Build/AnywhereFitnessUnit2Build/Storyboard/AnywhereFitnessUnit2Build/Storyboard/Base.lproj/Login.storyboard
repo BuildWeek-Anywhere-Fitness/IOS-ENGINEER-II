@@ -99,14 +99,34 @@
                                     <segment title="Trainer"/>
                                 </segments>
                             </segmentedControl>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="NWk-Oc-A9p">
+                                <rect key="frame" x="69" y="821.5" width="276.5" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="If you need to register, please click" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qpC-30-dPx">
+                                        <rect key="frame" x="0.0" y="0.0" width="237.5" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKt-Sh-sdf">
+                                        <rect key="frame" x="241.5" y="0.0" width="35" height="30"/>
+                                        <state key="normal" title="here."/>
+                                        <connections>
+                                            <action selector="registerButtonTapped:" destination="rp2-pu-RLx" eventType="touchUpInside" id="R9t-KB-hPH"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="NWk-Oc-A9p" firstAttribute="top" secondItem="Zd7-sY-MlZ" secondAttribute="bottom" constant="40" id="62x-yb-Jvo"/>
                             <constraint firstItem="9JD-c6-l4c" firstAttribute="top" secondItem="GZ5-I6-O43" secondAttribute="top" constant="100" id="7Rh-My-tYq"/>
                             <constraint firstItem="GZ5-I6-O43" firstAttribute="trailing" secondItem="8n9-Wi-Bjl" secondAttribute="trailing" constant="40" id="A7n-S3-sUe"/>
                             <constraint firstItem="Zd7-sY-MlZ" firstAttribute="top" secondItem="9JD-c6-l4c" secondAttribute="bottom" constant="30" id="EmY-8B-5g1"/>
                             <constraint firstItem="GZ5-I6-O43" firstAttribute="trailing" secondItem="9JD-c6-l4c" secondAttribute="trailing" constant="40" id="FZd-YA-zIQ"/>
                             <constraint firstItem="8n9-Wi-Bjl" firstAttribute="top" secondItem="GZ5-I6-O43" secondAttribute="top" constant="20" id="Mpc-6H-LP5"/>
+                            <constraint firstItem="NWk-Oc-A9p" firstAttribute="centerX" secondItem="vbD-QM-ikl" secondAttribute="centerX" id="SHe-Pd-zpg"/>
                             <constraint firstItem="8n9-Wi-Bjl" firstAttribute="leading" secondItem="GZ5-I6-O43" secondAttribute="leading" constant="40" id="g5f-J9-GLO"/>
                             <constraint firstItem="GZ5-I6-O43" firstAttribute="trailing" secondItem="Zd7-sY-MlZ" secondAttribute="trailing" constant="50" id="kGx-rC-eGL"/>
                             <constraint firstItem="Zd7-sY-MlZ" firstAttribute="leading" secondItem="GZ5-I6-O43" secondAttribute="leading" constant="50" id="l9Z-mU-KTQ"/>
@@ -116,6 +136,7 @@
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="zPM-6A-9b9" id="jpV-85-b1x"/>
+                        <outlet property="loginRegisterButton" destination="Q6D-g3-1Uw" id="Tgc-Qs-rtb"/>
                         <outlet property="passwordTextField" destination="ZJi-8H-Skn" id="P5B-3K-EFl"/>
                         <outlet property="segmentedControl" destination="8n9-Wi-Bjl" id="PeK-hX-TAd"/>
                         <outlet property="usernameTextField" destination="B0Y-U3-Jgj" id="1jO-vG-BXB"/>

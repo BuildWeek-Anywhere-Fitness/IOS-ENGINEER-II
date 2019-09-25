@@ -13,16 +13,20 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
+    @IBOutlet weak var loginRegisterButton: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    var isLogin: Bool = false
+    var isLogin: Bool = true
     var userController = UserController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setViews()
         
-        // Do any additional setup after loading the view.
+    }
+    
+    private func setViews() {
+        loginRegisterButton.setTitle("Login", for: .normal)
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -46,6 +50,16 @@ class LoginViewController: UIViewController {
             performSegue(withIdentifier: "TrainerLoginSegue", sender: self)
         }
         
+    }
+    
+    @IBAction func registerButtonTapped(_ sender: UIButton) {
+        
+        isLogin = !isLogin
+        if isLogin == true{
+            loginRegisterButton.setTitle("Login", for: .normal)
+        } else {
+        loginRegisterButton.setTitle("Register", for: .normal)
+        }
     }
     
     // MARK: - Methods

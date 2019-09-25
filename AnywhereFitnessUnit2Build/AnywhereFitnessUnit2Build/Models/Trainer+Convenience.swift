@@ -27,7 +27,7 @@ extension Trainer {
 		self.email = email
 	}
 	
-	@discardableResult convenience init?(trainerRepresentation: ClientRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+	@discardableResult convenience init?(trainerRepresentation: TrainerRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         self.init(context: context)
         
         self.username = trainerRepresentation.username
