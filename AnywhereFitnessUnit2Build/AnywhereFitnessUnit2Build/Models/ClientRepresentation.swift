@@ -8,13 +8,13 @@
 
 import Foundation
 
+struct ClientResult: Codable {
+    var token: String
+}
+
 struct ClientRepresentation: Equatable, Codable {
+	let email: String
 	let username: String
 	let password: String
-	let email: String
 }
 
-
-struct UserResult: Codable {
-    var id: Int
-}

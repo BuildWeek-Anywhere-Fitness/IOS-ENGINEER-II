@@ -8,10 +8,30 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--ClientHome-->
+        <scene sceneID="OhG-xT-P3W">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="ClientHome" id="bux-gz-nG2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="JaQ-jl-W7S"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lh7-vJ-JBF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-515" y="-224"/>
+        </scene>
+        <!--TrainerHome-->
+        <scene sceneID="QAc-Ql-fIh">
+            <objects>
+                <viewControllerPlaceholder storyboardName="TrainerHome" referencedIdentifier="TrainerHome" id="W7C-5h-F7d" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="pGy-AD-s5J"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bVV-wp-WTq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-41" y="-223"/>
+        </scene>
         <!--Login View Controller-->
         <scene sceneID="4vH-ZO-VVd">
             <objects>
-                <viewController id="rp2-pu-RLx" customClass="LoginViewController" customModule="AnywhereFitnessUnit2Build" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="rp2-pu-RLx" customClass="LoginViewController" customModule="AnywhereFitnessUnit2Build" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="vbD-QM-ikl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -95,15 +115,17 @@
                         <viewLayoutGuide key="safeArea" id="GZ5-I6-O43"/>
                     </view>
                     <connections>
-                        <outlet property="emailTextField" destination="zPM-6A-9b9" id="cpG-dl-6rr"/>
-                        <outlet property="passwordTextField" destination="ZJi-8H-Skn" id="1m2-cl-hI8"/>
+                        <outlet property="emailTextField" destination="zPM-6A-9b9" id="jpV-85-b1x"/>
+                        <outlet property="passwordTextField" destination="ZJi-8H-Skn" id="P5B-3K-EFl"/>
                         <outlet property="segmentedControl" destination="8n9-Wi-Bjl" id="PeK-hX-TAd"/>
-                        <outlet property="usernameTextField" destination="B0Y-U3-Jgj" id="zog-cn-D5u"/>
+                        <outlet property="usernameTextField" destination="B0Y-U3-Jgj" id="1jO-vG-BXB"/>
+                        <segue destination="bux-gz-nG2" kind="show" identifier="ClientLoginSegue" id="fjS-f2-K7l"/>
+                        <segue destination="W7C-5h-F7d" kind="showDetail" identifier="TrainerLoginSegue" id="xfT-EI-P1g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WG1-hn-gMu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-423" y="-112"/>
+            <point key="canvasLocation" x="-287" y="-654"/>
         </scene>
     </scenes>
 </document>

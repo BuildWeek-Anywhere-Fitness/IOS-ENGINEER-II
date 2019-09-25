@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yIh-Pr-Xf4">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -11,8 +11,7 @@
         <!--Client View Controller-->
         <scene sceneID="zit-o1-ska">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qej-XR-cRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="yIh-Pr-Xf4" customClass="ClientViewController" customModule="AnywhereFitnessUnit2Build" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ClientHome" id="yIh-Pr-Xf4" customClass="ClientViewController" customModule="AnywhereFitnessUnit2Build" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q05-Yv-yfr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -74,13 +73,14 @@
                         <segue destination="1em-Rd-9zX" kind="presentation" identifier="ClientLoginModalSegue" id="ImP-lL-27A"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qej-XR-cRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-423.1884057971015" y="632.8125"/>
         </scene>
         <!--Login-->
         <scene sceneID="nlv-v5-Mjd">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="1em-Rd-9zX" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardIdentifier="Login" storyboardName="Login" id="1em-Rd-9zX" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rno-W8-zbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="93" y="281"/>
