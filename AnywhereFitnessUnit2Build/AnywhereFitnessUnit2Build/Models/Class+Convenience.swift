@@ -31,6 +31,11 @@ enum Intensity: String, CaseIterable {
     case advanced
 }
 
+enum ClassType: String, CaseIterable {
+    case clientClasses
+    case trainerClasses
+}
+
 extension Class {
     
     var classRepresentation: ClassRepresentation? {
@@ -46,7 +51,7 @@ extension Class {
         return ClassRepresentation(name: name, location: location, date: date, duration: duration, intensityLevel: intensity, category: category, identifier: Int(identifier))
     }
     
-    @discardableResult convenience init?(name: String, category: Category, date: Date, duration: Duration, intensityLevel: Intensity, location: String, identifier: Int32, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(name: String, category: Category, date: Date, duration: Duration, intensityLevel: Intensity, location: String, classType: ClassType? = ClassType.trainerClasses, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
         
@@ -56,8 +61,7 @@ extension Class {
         self.duration = duration.rawValue
         self.intensityLevel = intensityLevel.rawValue
         self.location = location
-        self.identifier = Int32(identifier)
-        
+        self.classType = classType?.rawValue
     }
     
     @discardableResult convenience init?(classRepresentation: ClassRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
@@ -67,9 +71,8 @@ extension Class {
             let date = classRepresentation.date,
             let duration = classRepresentation.duration,
             let intensityLevel = classRepresentation.intensityLevel,
-            let location = classRepresentation.location,
-            let identifier = classRepresentation.identifier else {return nil}
-        
+            let location = classRepresentation.location
+            else {return nil}
         
         self.init(name: name,
                   category: Category(rawValue: category)!,
@@ -77,7 +80,6 @@ extension Class {
                   duration: Duration(rawValue: duration)!,
                   intensityLevel: Intensity(rawValue: intensityLevel)!,
                   location: location,
-                  identifier: Int32(identifier),
                   context: context)
     }
     

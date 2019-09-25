@@ -12,11 +12,22 @@ import CoreData
 
 class ClassController {
     
+    var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
+    
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, yyyy, h:mm a"
+        formatter.timeZone = TimeZone(secondsFromGMT: secondsFromGMT)
+        return formatter
+    }
+    
     let baseURL = URL(string: "https://anywhere-health.herokuapp.com/api/")!
     
     // POST classs to server
-    func postClass(postClass: ClassRepresentation, completion: @escaping () -> Void = { }) {
+    func postClassOnServer(postClass: ClassRepresentation, completion: @escaping () -> Void = { }) {
+        
         let requestURL: URL = baseURL.appendingPathComponent("classes")
+        
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
@@ -24,45 +35,48 @@ class ClassController {
             let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .iso8601
             request.httpBody = try encoder.encode(postClass)
+            completion()
+            print("Succeeded posting")
         } catch {
             NSLog("Error encoding class \(postClass): \(error)")
             completion()
             return
         }
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                NSLog("Error POSTing class to server: \(error)")
-                completion()
-                return
-            }
-            
-            guard let data = data else { return }
-            do {
-                
-                let classID = try JSONDecoder().decode([Int].self, from: data)
-                let moc = CoreDataStack.shared.mainContext
-                moc.performAndWait {
-                    guard let name = postClass.name,
-                        let category = postClass.category,
-                        let date = postClass.date,
-                        let duration = postClass.duration,
-                        let intensity = postClass.intensityLevel,
-                        let location = postClass.location,
-                        let identifier = classID.first else { return }
-                    Class(name: name, category: Category(rawValue: category)!, date: date, duration: Duration(rawValue: duration)!, intensityLevel: Intensity(rawValue: intensity)!, location: location, identifier: Int32(identifier))                }
-                
-                CoreDataStack.shared.save(context: moc)
-            } catch {
-                NSLog("Error decoding receipt and saving receipt: \(error)")
-            }
-            
-            completion()
-        }.resume()
+//        URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            if let error = error {
+//                NSLog("Error POSTing class to server: \(error)")
+//                completion()
+//                return
+//            }
+//
+//            guard let data = data else { return }
+//            do {
+//
+//                let classID = try JSONDecoder().decode([Int].self, from: data)
+//                let context = CoreDataStack.shared.mainContext
+//                context.performAndWait {
+//                    guard let name = postClass.name,
+//                        let category = postClass.category,
+//                        let date = postClass.date,
+//                        let duration = postClass.duration,
+//                        let intensity = postClass.intensityLevel,
+//                        let location = postClass.location,
+//                        let identifier = classID.first else { return }
+//                    Class(name: name, category: Category(rawValue: category)!, date: date, duration: Duration(rawValue: duration)!, intensityLevel: Intensity(rawValue: intensity)!, location: location, identifier: Int32(identifier))                }
+//
+//                CoreDataStack.shared.save(context: context)
+//            } catch {
+//                NSLog("Error decoding receipt and saving receipt: \(error)")
+//            }
+//
+//            completion()
+//        }.resume()
     }
     
     // update class on server
-    func putClass(classRepresentation: ClassRepresentation, completion: @escaping () -> Void = { }) {
+    func putClassOnServer(classRepresentation: ClassRepresentation, completion: @escaping () -> Void = { }) {
+        
         guard let identifier = classRepresentation.identifier else { return }
         
         let requestURL: URL = baseURL.appendingPathComponent("class/\(identifier)")
@@ -88,6 +102,45 @@ class ClassController {
         }.resume()
     }
     
+    // adding class to server
+    func put(class: Class, completion: @escaping () -> Void = { }) {
+        
+        let requestURL = baseURL
+            .appendingPathComponent("classes")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.put.rawValue
+        
+        let classClass = Class()
+        
+        guard let classRepresentation = classClass.classRepresentation else {
+            NSLog("Task Representation is nil")
+            completion()
+            return
+        }
+        
+        do {
+            let encoder = JSONEncoder()
+            request.httpBody = try encoder.encode(classRepresentation)
+            encoder.dateEncodingStrategy = .formatted(dateFormatter)
+        } catch {
+            NSLog("Error encoding task representation: \(error)")
+            completion()
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
+            
+            if let error = error {
+                NSLog("Error PUTting task: \(error)")
+                completion()
+                return
+            }
+            
+            completion()
+            }.resume()
+    }
+    
     func fetchAllClasses(completion: @escaping () -> Void = { }) {
         
         let requestURL = baseURL.appendingPathExtension("classes")
@@ -108,8 +161,8 @@ class ClassController {
             do {
                 let decoder = JSONDecoder()
                 
-                let classReprentations = try decoder.decode([String: ClassRepresentation].self, from: data).map({ $0.value })
-                
+                let classReprentations = try decoder.decode([ClassRepresentation].self, from: data)
+                // trying to aassigning the returned array to CoreData all classes
                 self.updateClassOnCoreData(with: classReprentations)
             } catch {
                 NSLog("Error decoding: \(error)")
@@ -118,9 +171,28 @@ class ClassController {
         }.resume()
     }
     
+    func deleteClassFromServer(classObject: Class, completion: @escaping (Error?) -> Void ) {
+        
+        let identifier = String(classObject.identifier)
+        
+        let requestURL = baseURL
+            .appendingPathComponent("classes")
+            .appendingPathComponent(identifier)
+        
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                NSLog("Error deleting class: \(error)")
+                completion(error)
+            }
+        }.resume()
+    }
+    
     //
     func updateClassOnCoreData(with representations: [ClassRepresentation]) {
-        
         
         let identifiersToFetch = representations.compactMap({ $0.identifier })
         
@@ -175,48 +247,27 @@ class ClassController {
         }
     }
     
-    func deleteClassFromServer(classObject: Class, completion: @escaping (Error?) -> Void ) {
-           
-           let identifier = String(classObject.identifier)
-           
-           let requestURL = baseURL
-                .appendingPathComponent("classes")
-               .appendingPathComponent(identifier)
-               
-           
-           var request = URLRequest(url: requestURL)
-           request.httpMethod = HTTPMethod.delete.rawValue
-           
-           URLSession.shared.dataTask(with: request) { (_, _, error) in
-               if let error = error {
-                   NSLog("Error deleting class: \(error)")
-                   completion(error)
-               }
-               }.resume()
-       }
-       
     
     // Create
     
-    func createClass(with name: String, location: String, intensityLevel: String, duration: String, date: Date, category: String, identifier: Int?) {
+    func createClass(with name: String, location: String, intensityLevel: Intensity, duration: Duration , date: Date, category: Category, classType: ClassType) {
         
-        let classObject = ClassRepresentation(name: name, location: location, date: date, duration: duration, intensityLevel: intensityLevel, category: category, identifier: nil)
+        guard let classObject = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensityLevel, location: location, classType: classType) else {return}
         
         CoreDataStack.shared.save()
-        putClass(classRepresentation: classObject)
-        
+        put(class: classObject)
     }
     
     // UPDATE
     
-    func updateClass(with classObject: Class, name: String, location: String, intesityLevel: String, duration: String, date: Date, category: String) {
+    func updateClass(with classObject: Class, name: String, location: String, intesityLevel: Intensity, duration: Duration, date: Date, category: Category) {
         
         classObject.name = name
         classObject.location = location
-        classObject.intensityLevel = intesityLevel
-        classObject.duration = duration
+        classObject.intensityLevel = intesityLevel.rawValue
+        classObject.duration = duration.rawValue
         classObject.date = date
-        classObject.category = category
+        classObject.category = category.rawValue
         
         CoreDataStack.shared.save()
         
@@ -233,4 +284,5 @@ class ClassController {
         
     }
 }
+
 

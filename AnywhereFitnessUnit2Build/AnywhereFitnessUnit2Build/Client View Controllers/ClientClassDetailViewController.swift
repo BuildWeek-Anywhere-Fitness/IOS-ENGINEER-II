@@ -10,6 +10,12 @@ import UIKit
 
 class ClientClassDetailViewController: UIViewController {
     
+    var classObject: Class? {
+        didSet {
+            
+        }
+    }
+    
     @IBOutlet weak var classLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -18,10 +24,10 @@ class ClientClassDetailViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var doneButton: UIButton!
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     

@@ -161,7 +161,7 @@
                     <connections>
                         <outlet property="doneButton" destination="nsl-ru-bDq" id="w45-Cc-81D"/>
                         <outlet property="searchBar" destination="JaB-UL-yO5" id="xUW-h4-25a"/>
-                        <outlet property="searchTableView" destination="Jyb-RM-z1v" id="Xaz-5L-cqc"/>
+                        <outlet property="tableView" destination="Jyb-RM-z1v" id="Xaz-5L-cqc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GpE-Lt-ke1" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AllClasses" representedClassName="AllClasses" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="allClasses" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Class" inverseName="allClasses" inverseEntity="Class"/>
+    </entity>
+    <entity name="Class" representedClassName="Class" syncable="YES" codeGenerationType="class">
+        <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="duration" optional="YES" attributeType="String"/>
+        <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="intensityLevel" optional="YES" attributeType="String"/>
+        <attribute name="location" optional="YES" attributeType="String"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="allClasses" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AllClasses" inverseName="allClasses" inverseEntity="AllClasses"/>
+        <relationship name="clientClasses" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ClientClasses" inverseName="clientClasses" inverseEntity="ClientClasses"/>
+        <relationship name="trainerClasses" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ClassList" inverseName="classes" inverseEntity="ClassList"/>
+    </entity>
+    <entity name="ClassList" representedClassName="ClassList" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="classes" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Class" inverseName="trainerClasses" inverseEntity="Class"/>
+    </entity>
+    <entity name="Client" representedClassName="Client" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="trainer" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="ClientClasses" representedClassName="ClientClasses" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="clientClasses" optional="YES" toMany="YES" deletionRule="Deny" destinationEntity="Class" inverseName="clientClasses" inverseEntity="Class"/>
+    </entity>
+    <entity name="Trainer" representedClassName="Trainer" syncable="YES" codeGenerationType="class">
+        <attribute name="email" optional="YES" attributeType="String"/>
+        <attribute name="password" optional="YES" attributeType="String"/>
+        <attribute name="trainer" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <attribute name="username" optional="YES" attributeType="String"/>
+    </entity>
+    <elements>
+        <element name="Class" positionX="153.80859375" positionY="205.171875" width="128" height="193"/>
+        <element name="Client" positionX="-1.8046875" positionY="-40.140625" width="128" height="105"/>
+        <element name="Trainer" positionX="310.69921875" positionY="-43.1796875" width="128" height="105"/>
+        <element name="ClientClasses" positionX="0" positionY="90" width="128" height="73"/>
+        <element name="ClassList" positionX="308.9296875" positionY="88.15625" width="128" height="73"/>
+        <element name="AllClasses" positionX="171" positionY="126" width="128" height="73"/>
+    </elements>
+</model>

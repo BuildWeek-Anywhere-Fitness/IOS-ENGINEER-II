@@ -12,24 +12,27 @@ import CoreData
 class TrainerViewController: UIViewController {
     
     let classController = ClassController()
-	
-	lazy var fetch: NSFetchedResultsController<Class> = {
-		   
-		   let request: NSFetchRequest<Class> = Class.fetchRequest()
-		   request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
-		   // basically sorts everything
-		   let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: "category", cacheName: nil)
-		   
-		   frc.delegate = self
-		   
-		   do {
-			   try frc.performFetch()
-		   } catch {
-			   fatalError("Error performing fetch for frc: \(error)")
-		   }
-		   
-		   return frc
-	   }()
+    
+    var classType = ClassType.trainerClasses
+    
+	 lazy var fetch: NSFetchedResultsController<Class> = {
+           
+           let request: NSFetchRequest<Class> = Class.fetchRequest()
+           request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+        request.predicate = NSPredicate(format: "classType == %@", classType.rawValue)
+           // basically sorts everything
+           let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+           
+           frc.delegate = self
+           
+           do {
+               try frc.performFetch()
+           } catch {
+               fatalError("Error performing fetch for frc: \(error)")
+           }
+           
+           return frc
+       }()
     
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
@@ -46,9 +49,6 @@ class TrainerViewController: UIViewController {
         tableView.reloadData()
     }
     
-    @IBAction func createAClasssButtonTapped(_ sender: UIButton) {
-        
-    }
 	
 	// METHODS:
     
