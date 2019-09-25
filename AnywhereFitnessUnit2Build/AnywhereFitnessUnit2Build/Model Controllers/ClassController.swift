@@ -12,6 +12,14 @@ import CoreData
 
 class ClassController {
     
+    var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
+    var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM dd, yyyy, h:mm a"
+        formatter.timeZone = TimeZone(secondsFromGMT: secondsFromGMT)
+        return formatter
+    }
+    
     let baseURL = URL(string: "https://anywhere-health.herokuapp.com/api/")!
     
     // POST classs to server
@@ -34,35 +42,35 @@ class ClassController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
-            if let error = error {
-                NSLog("Error POSTing class to server: \(error)")
-                completion()
-                return
-            }
-
-            guard let data = data else { return }
-            do {
-
-                let classID = try JSONDecoder().decode([Int].self, from: data)
-                let context = CoreDataStack.shared.mainContext
-                context.performAndWait {
-                    guard let name = postClass.name,
-                        let category = postClass.category,
-                        let date = postClass.date,
-                        let duration = postClass.duration,
-                        let intensity = postClass.intensityLevel,
-                        let location = postClass.location,
-                        let identifier = classID.first else { return }
-                    Class(name: name, category: Category(rawValue: category)!, date: date, duration: Duration(rawValue: duration)!, intensityLevel: Intensity(rawValue: intensity)!, location: location, identifier: Int32(identifier))                }
-
-                CoreDataStack.shared.save(context: context)
-            } catch {
-                NSLog("Error decoding receipt and saving receipt: \(error)")
-            }
-
-            completion()
-        }.resume()
+//        URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            if let error = error {
+//                NSLog("Error POSTing class to server: \(error)")
+//                completion()
+//                return
+//            }
+//
+//            guard let data = data else { return }
+//            do {
+//
+//                let classID = try JSONDecoder().decode([Int].self, from: data)
+//                let context = CoreDataStack.shared.mainContext
+//                context.performAndWait {
+//                    guard let name = postClass.name,
+//                        let category = postClass.category,
+//                        let date = postClass.date,
+//                        let duration = postClass.duration,
+//                        let intensity = postClass.intensityLevel,
+//                        let location = postClass.location,
+//                        let identifier = classID.first else { return }
+//                    Class(name: name, category: Category(rawValue: category)!, date: date, duration: Duration(rawValue: duration)!, intensityLevel: Intensity(rawValue: intensity)!, location: location, identifier: Int32(identifier))                }
+//
+//                CoreDataStack.shared.save(context: context)
+//            } catch {
+//                NSLog("Error decoding receipt and saving receipt: \(error)")
+//            }
+//
+//            completion()
+//        }.resume()
     }
     
     // update class on server
@@ -93,6 +101,45 @@ class ClassController {
         }.resume()
     }
     
+    // adding class to server
+    func put(class: Class, completion: @escaping () -> Void = { }) {
+        
+        let requestURL = baseURL
+            .appendingPathComponent("classes")
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.put.rawValue
+        
+        let classClass = Class()
+        
+        guard let classRepresentation = classClass.classRepresentation else {
+            NSLog("Task Representation is nil")
+            completion()
+            return
+        }
+        
+        do {
+            let encoder = JSONEncoder()
+            request.httpBody = try encoder.encode(classRepresentation)
+            encoder.dateEncodingStrategy = .formatted(dateFormatter)
+        } catch {
+            NSLog("Error encoding task representation: \(error)")
+            completion()
+            return
+        }
+        
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
+            
+            if let error = error {
+                NSLog("Error PUTting task: \(error)")
+                completion()
+                return
+            }
+            
+            completion()
+            }.resume()
+    }
+    
     func fetchAllClasses(completion: @escaping () -> Void = { }) {
         
         let requestURL = baseURL.appendingPathExtension("classes")
@@ -113,7 +160,11 @@ class ClassController {
             do {
                 let decoder = JSONDecoder()
                 
-                let classReprentations = try decoder.decode([String: ClassRepresentation].self, from: data).map({ $0.value })
+                let classReprentations = try decoder.decode([ClassRepresentation].self, from: data)
+                // trying to aassigning the returned array to CoreData all classes
+                let allClasses = ClassList(name: "allClasses")
+                let set = NSOrderedSet(array: classReprentations)
+                allClasses?.addToClasses(set)
                 
                 self.updateClassOnCoreData(with: classReprentations)
             } catch {
@@ -202,24 +253,24 @@ class ClassController {
     
     // Create
     
-    func createClass(with name: String, location: String, intensityLevel: String, duration: String, date: Date, category: String, identifier: Int?) {
+    func createClass(with name: String, location: String, intensityLevel: Intensity, duration: Duration , date: Date, category: Category, classList: [ClassList]) {
         
-        let classObject = ClassRepresentation(name: name, location: location, date: date, duration: duration, intensityLevel: intensityLevel, category: category, identifier: nil)
+        guard let classObject = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensityLevel, location: location, in: classList) else {return}
         
         CoreDataStack.shared.save()
-postClassOnServer(postClass: classObject)
+        put(class: classObject)
     }
     
     // UPDATE
     
-    func updateClass(with classObject: Class, name: String, location: String, intesityLevel: String, duration: String, date: Date, category: String) {
+    func updateClass(with classObject: Class, name: String, location: String, intesityLevel: Intensity, duration: Duration, date: Date, category: Category) {
         
         classObject.name = name
         classObject.location = location
-        classObject.intensityLevel = intesityLevel
-        classObject.duration = duration
+        classObject.intensityLevel = intesityLevel.rawValue
+        classObject.duration = duration.rawValue
         classObject.date = date
-        classObject.category = category
+        classObject.category = category.rawValue
         
         CoreDataStack.shared.save()
         

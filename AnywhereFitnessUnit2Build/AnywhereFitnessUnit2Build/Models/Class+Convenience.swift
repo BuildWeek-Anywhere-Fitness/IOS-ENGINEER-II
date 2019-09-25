@@ -46,7 +46,7 @@ extension Class {
         return ClassRepresentation(name: name, location: location, date: date, duration: duration, intensityLevel: intensity, category: category, identifier: Int(identifier))
     }
     
-    @discardableResult convenience init?(name: String, category: Category, date: Date, duration: Duration, intensityLevel: Intensity, location: String, identifier: Int32, in classList: [ClassList]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(name: String, category: Category, date: Date, duration: Duration, intensityLevel: Intensity, location: String, in classList: [ClassList]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
         
@@ -56,7 +56,7 @@ extension Class {
         self.duration = duration.rawValue
         self.intensityLevel = intensityLevel.rawValue
         self.location = location
-        self.identifier = Int32(identifier)
+        
         
         let classListSet = NSSet(array: classList!)
         self.classList = classListSet
@@ -69,9 +69,10 @@ extension Class {
             let date = classRepresentation.date,
             let duration = classRepresentation.duration,
             let intensityLevel = classRepresentation.intensityLevel,
-            let location = classRepresentation.location,
-            let identifier = classRepresentation.identifier else {return nil}
-        
+            let location = classRepresentation.location
+//            let set = classList,
+//            let classListArray = set.allObjects as? [ClassList]
+            else {return nil}
         
         self.init(name: name,
                   category: Category(rawValue: category)!,
@@ -79,7 +80,7 @@ extension Class {
                   duration: Duration(rawValue: duration)!,
                   intensityLevel: Intensity(rawValue: intensityLevel)!,
                   location: location,
-                  identifier: Int32(identifier),
+                  in: nil,
                   context: context)
     }
     

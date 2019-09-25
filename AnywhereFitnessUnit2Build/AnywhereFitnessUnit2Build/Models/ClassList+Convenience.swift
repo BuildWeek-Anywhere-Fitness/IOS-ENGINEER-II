@@ -11,6 +11,29 @@ import CoreData
 
 extension ClassList {
     
+    static let shared = ClassList()
+    
+    var allClasses: ClassList? {
+        
+         let list = ClassList(name: "allClasses")
+        
+        return  list
+    }
+    
+    var trainerClasses: ClassList? {
+           
+            let list = ClassList(name: "trainerClasses")
+           
+           return  list
+       }
+    
+    var clientClasses: ClassList? {
+        
+         let list = ClassList(name: "clientClasses")
+        
+        return  list
+    }
+    
     @discardableResult convenience init?(name: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)

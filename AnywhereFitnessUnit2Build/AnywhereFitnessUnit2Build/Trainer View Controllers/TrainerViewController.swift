@@ -12,24 +12,27 @@ import CoreData
 class TrainerViewController: UIViewController {
     
     let classController = ClassController()
+    
+    var classList: ClassList!
 	
-	lazy var fetch: NSFetchedResultsController<TrainerClasses> = {
-		   
-		   let request: NSFetchRequest<TrainerClasses> = TrainerClasses.fetchRequest()
-		   request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
-		   // basically sorts everything
-		   let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
-		   
-		   frc.delegate = self
-		   
-		   do {
-			   try frc.performFetch()
-		   } catch {
-			   fatalError("Error performing fetch for frc: \(error)")
-		   }
-		   
-		   return frc
-	   }()
+	 lazy var fetch: NSFetchedResultsController<Class> = {
+           
+           let request: NSFetchRequest<Class> = Class.fetchRequest()
+           request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+           request.predicate = NSPredicate(format: "classList == trainerClasses", classList)
+           // basically sorts everything
+           let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
+           
+           frc.delegate = self
+           
+           do {
+               try frc.performFetch()
+           } catch {
+               fatalError("Error performing fetch for frc: \(error)")
+           }
+           
+           return frc
+       }()
     
     @IBOutlet weak var welcomeLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!

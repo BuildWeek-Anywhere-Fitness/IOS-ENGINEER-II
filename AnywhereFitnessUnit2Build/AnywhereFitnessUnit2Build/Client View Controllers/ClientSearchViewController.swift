@@ -10,19 +10,21 @@ import UIKit
 import CoreData
 
 class ClientSearchViewController: UIViewController {
-
+    
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var doneButton: UIButton!
     
     var classController: ClassController?
+    var classList: ClassList!
     
     lazy var fetch: NSFetchedResultsController<Class> = {
         
         let request: NSFetchRequest<Class> = Class.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+        request.predicate = NSPredicate(format: "classList == allClasses", classList)
         // basically sorts everything
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: "category", cacheName: nil)
+        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         
         frc.delegate = self
         
@@ -35,11 +37,10 @@ class ClientSearchViewController: UIViewController {
         return frc
     }()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         searchBar.delegate = self
-
+        classController?.fetchAllClasses()
     }
     
     @IBAction func doneButtonTapped(_ sender: UIButton) {
@@ -130,4 +131,15 @@ extension ClientSearchViewController: NSFetchedResultsControllerDelegate {
 
 extension ClientSearchViewController: UISearchBarDelegate {
     
+//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+//        
+//        
+//        guard let searchTerm = searchBar.text else {return}
+//        
+//        pokedexController.preformSearch(with: searchTerm) { (error) in
+//            DispatchQueue.main.async {
+//                self.setViews()
+//            }
+//        }
+//    }
 }
