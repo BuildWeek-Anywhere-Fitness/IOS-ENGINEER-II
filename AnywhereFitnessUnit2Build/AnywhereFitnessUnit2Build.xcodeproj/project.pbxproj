@@ -11,6 +11,7 @@
 		38A5CF34233AA8CB00A8F66F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF33233AA8CB00A8F66F /* LoginViewController.swift */; };
 		38A5CF37233AADA000A8F66F /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF36233AADA000A8F66F /* KeychainItemAccessibility.swift */; };
 		38A5CF39233AADF500A8F66F /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF38233AADF500A8F66F /* KeychainWrapper.swift */; };
+		38A5CF43233B427800A8F66F /* ClassList+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF42233B427800A8F66F /* ClassList+Convenience.swift */; };
 		38B7E2B823393CC000327162 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E2B723393CC000327162 /* AppDelegate.swift */; };
 		38B7E2BD23393CC000327162 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E2BB23393CC000327162 /* Main.storyboard */; };
 		38B7E2BF23393CC100327162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E2BE23393CC100327162 /* Assets.xcassets */; };
@@ -43,6 +44,8 @@
 		38A5CF33233AA8CB00A8F66F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		38A5CF36233AADA000A8F66F /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
 		38A5CF38233AADF500A8F66F /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		38A5CF41233B41E400A8F66F /* ClientTrainerClass+ClassList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ClientTrainerClass+ClassList.xcdatamodel"; sourceTree = "<group>"; };
+		38A5CF42233B427800A8F66F /* ClassList+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassList+Convenience.swift"; sourceTree = "<group>"; };
 		38B7E2B423393CC000327162 /* AnywhereFitnessUnit2Build.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnywhereFitnessUnit2Build.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B7E2B723393CC000327162 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38B7E2BC23393CC000327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				38B7E31B23393FD500327162 /* ClientTrainerClass.xcdatamodeld */,
+				38A5CF42233B427800A8F66F /* ClassList+Convenience.swift */,
 				38B7E31E2339597700327162 /* Class+Convenience.swift */,
 				38B7E3202339598400327162 /* ClassRepresentation.swift */,
 				38B7E324233959B900327162 /* ClientRepresentation.swift */,
@@ -284,6 +288,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A5CF43233B427800A8F66F /* ClassList+Convenience.swift in Sources */,
 				38A5CF31233A741D00A8F66F /* SearchTableViewCell.swift in Sources */,
 				38B7E32C2339712600327162 /* CoreDataStack.swift in Sources */,
 				38B7E31F2339597700327162 /* Class+Convenience.swift in Sources */,
@@ -533,9 +538,10 @@
 		38B7E31B23393FD500327162 /* ClientTrainerClass.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				38A5CF41233B41E400A8F66F /* ClientTrainerClass+ClassList.xcdatamodel */,
 				38B7E31C23393FD500327162 /* ClientTrainerClass.xcdatamodel */,
 			);
-			currentVersion = 38B7E31C23393FD500327162 /* ClientTrainerClass.xcdatamodel */;
+			currentVersion = 38A5CF41233B41E400A8F66F /* ClientTrainerClass+ClassList.xcdatamodel */;
 			path = ClientTrainerClass.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

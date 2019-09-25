@@ -11,6 +11,7 @@
         <!--Client View Controller-->
         <scene sceneID="zit-o1-ska">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qej-XR-cRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="yIh-Pr-Xf4" customClass="ClientViewController" customModule="AnywhereFitnessUnit2Build" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Q05-Yv-yfr">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
@@ -68,12 +69,11 @@
                     </view>
                     <connections>
                         <outlet property="searchForAClassButton" destination="Bec-oU-XiE" id="pjH-A6-dyb"/>
-                        <outlet property="tableView" destination="N4v-2u-N4w" id="OWq-gR-oYw"/>
+                        <outlet property="tableView" destination="N4v-2u-N4w" id="NM9-Fu-qlR"/>
                         <outlet property="welcomeLabel" destination="trx-GS-Yx5" id="4DO-AH-38d"/>
                         <segue destination="1em-Rd-9zX" kind="presentation" identifier="ClientLoginModalSegue" id="ImP-lL-27A"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qej-XR-cRb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-423.1884057971015" y="632.8125"/>
         </scene>

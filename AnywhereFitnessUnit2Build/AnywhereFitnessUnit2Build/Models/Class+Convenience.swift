@@ -46,7 +46,7 @@ extension Class {
         return ClassRepresentation(name: name, location: location, date: date, duration: duration, intensityLevel: intensity, category: category, identifier: Int(identifier))
     }
     
-    @discardableResult convenience init?(name: String, category: Category, date: Date, duration: Duration, intensityLevel: Intensity, location: String, identifier: Int32, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(name: String, category: Category, date: Date, duration: Duration, intensityLevel: Intensity, location: String, identifier: Int32, in classList: [ClassList]?, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
         
         self.init(context: context)
         
@@ -58,6 +58,8 @@ extension Class {
         self.location = location
         self.identifier = Int32(identifier)
         
+        let classListSet = NSSet(array: classList!)
+        self.classList = classListSet
     }
     
     @discardableResult convenience init?(classRepresentation: ClassRepresentation, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {

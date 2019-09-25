@@ -13,12 +13,12 @@ class TrainerViewController: UIViewController {
     
     let classController = ClassController()
 	
-	lazy var fetch: NSFetchedResultsController<Class> = {
+	lazy var fetch: NSFetchedResultsController<TrainerClasses> = {
 		   
-		   let request: NSFetchRequest<Class> = Class.fetchRequest()
-		   request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
+		   let request: NSFetchRequest<TrainerClasses> = TrainerClasses.fetchRequest()
+		   request.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
 		   // basically sorts everything
-		   let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: "category", cacheName: nil)
+		   let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
 		   
 		   frc.delegate = self
 		   
@@ -46,9 +46,6 @@ class TrainerViewController: UIViewController {
         tableView.reloadData()
     }
     
-    @IBAction func createAClasssButtonTapped(_ sender: UIButton) {
-        
-    }
 	
 	// METHODS:
     

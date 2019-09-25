@@ -15,8 +15,10 @@ class ClassController {
     let baseURL = URL(string: "https://anywhere-health.herokuapp.com/api/")!
     
     // POST classs to server
-    func postClass(postClass: ClassRepresentation, completion: @escaping () -> Void = { }) {
+    func postClassOnServer(postClass: ClassRepresentation, completion: @escaping () -> Void = { }) {
+        
         let requestURL: URL = baseURL.appendingPathComponent("classes")
+        
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
         
@@ -24,6 +26,8 @@ class ClassController {
             let encoder = JSONEncoder()
             encoder.dateEncodingStrategy = .iso8601
             request.httpBody = try encoder.encode(postClass)
+            completion()
+            print("Succeeded posting")
         } catch {
             NSLog("Error encoding class \(postClass): \(error)")
             completion()
@@ -36,13 +40,13 @@ class ClassController {
                 completion()
                 return
             }
-            
+
             guard let data = data else { return }
             do {
-                
+
                 let classID = try JSONDecoder().decode([Int].self, from: data)
-                let moc = CoreDataStack.shared.mainContext
-                moc.performAndWait {
+                let context = CoreDataStack.shared.mainContext
+                context.performAndWait {
                     guard let name = postClass.name,
                         let category = postClass.category,
                         let date = postClass.date,
@@ -51,18 +55,19 @@ class ClassController {
                         let location = postClass.location,
                         let identifier = classID.first else { return }
                     Class(name: name, category: Category(rawValue: category)!, date: date, duration: Duration(rawValue: duration)!, intensityLevel: Intensity(rawValue: intensity)!, location: location, identifier: Int32(identifier))                }
-                
-                CoreDataStack.shared.save(context: moc)
+
+                CoreDataStack.shared.save(context: context)
             } catch {
                 NSLog("Error decoding receipt and saving receipt: \(error)")
             }
-            
+
             completion()
         }.resume()
     }
     
     // update class on server
-    func putClass(classRepresentation: ClassRepresentation, completion: @escaping () -> Void = { }) {
+    func putClassOnServer(classRepresentation: ClassRepresentation, completion: @escaping () -> Void = { }) {
+        
         guard let identifier = classRepresentation.identifier else { return }
         
         let requestURL: URL = baseURL.appendingPathComponent("class/\(identifier)")
@@ -118,9 +123,28 @@ class ClassController {
         }.resume()
     }
     
+    func deleteClassFromServer(classObject: Class, completion: @escaping (Error?) -> Void ) {
+        
+        let identifier = String(classObject.identifier)
+        
+        let requestURL = baseURL
+            .appendingPathComponent("classes")
+            .appendingPathComponent(identifier)
+        
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.delete.rawValue
+        
+        URLSession.shared.dataTask(with: request) { (_, _, error) in
+            if let error = error {
+                NSLog("Error deleting class: \(error)")
+                completion(error)
+            }
+        }.resume()
+    }
+    
     //
     func updateClassOnCoreData(with representations: [ClassRepresentation]) {
-        
         
         let identifiersToFetch = representations.compactMap({ $0.identifier })
         
@@ -175,26 +199,6 @@ class ClassController {
         }
     }
     
-    func deleteClassFromServer(classObject: Class, completion: @escaping (Error?) -> Void ) {
-           
-           let identifier = String(classObject.identifier)
-           
-           let requestURL = baseURL
-                .appendingPathComponent("classes")
-               .appendingPathComponent(identifier)
-               
-           
-           var request = URLRequest(url: requestURL)
-           request.httpMethod = HTTPMethod.delete.rawValue
-           
-           URLSession.shared.dataTask(with: request) { (_, _, error) in
-               if let error = error {
-                   NSLog("Error deleting class: \(error)")
-                   completion(error)
-               }
-               }.resume()
-       }
-       
     
     // Create
     
@@ -203,8 +207,7 @@ class ClassController {
         let classObject = ClassRepresentation(name: name, location: location, date: date, duration: duration, intensityLevel: intensityLevel, category: category, identifier: nil)
         
         CoreDataStack.shared.save()
-        putClass(classRepresentation: classObject)
-        
+postClassOnServer(postClass: classObject)
     }
     
     // UPDATE
@@ -234,3 +237,14 @@ class ClassController {
     }
 }
 
+// MARK: TrainerClasses & ClientClasses Methods
+
+extension ClassController {
+    
+    @discardableResult func createClassList(with name: String) -> ClassList {
+        let classes = ClassList(name: name)!
+        CoreDataStack.shared.save()
+        return classes
+    }
+    
+}
