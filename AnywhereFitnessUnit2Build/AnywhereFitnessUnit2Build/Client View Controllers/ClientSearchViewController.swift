@@ -22,6 +22,7 @@ class ClientSearchViewController: UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var addClassButton: UIButton!
     
     var classController = ClassController()
     lazy var fetch: NSFetchedResultsController<Class> = {
@@ -47,6 +48,7 @@ class ClientSearchViewController: UIViewController {
         searchBar.delegate = self
         classDetailStackView.isHidden = true
         viewLayover.isHidden = true
+        addClassButton.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -54,24 +56,46 @@ class ClientSearchViewController: UIViewController {
         tableView.reloadData()
     }
     
-    private func setViews() {
+    private func setSearchViews() {
         
-        if let classObject = classController.classObject {
-            classDetailStackView.isHidden = false
-            viewLayover.isHidden = false
-            for object in classObject {
-            classNameLabel.text = object.name
-            durationLabel.text = object.duration
-            intensityLabel.text = object.intensityLevel
-            categoryLabel.text = object.category
-            dateLabel.text = "\(object.date ?? Date())"
-            locationLabel.text = object.location
+        DispatchQueue.main.async {
+            if let classObject =  self.classController.classObject {
+                
+                self.tableView.isHidden = true
+                self.addClassButton.isHidden = false
+                self.addClassButton.setTitle("Add Class", for: .normal)
+                self.classDetailStackView.isHidden = false
+                self.viewLayover.isHidden = false
+                for object in classObject {
+                    self.classNameLabel.text = object.name
+                    self.durationLabel.text = object.duration
+                    self.intensityLabel.text = object.intensityLevel
+                    self.categoryLabel.text = object.category
+                    self.dateLabel.text = "\(object.date ?? Date())"
+                    self.locationLabel.text = object.location
+                }
+                
             }
-            
         }
         
     }
     
+    @IBAction func addClassButtonTapped(_ sender: UIButton) {
+        guard let classObjects = classController.classObject else {return}
+        let classObject = classObjects[0]
+        guard let name = classObject.name,
+            let category = Category(rawValue: classObject.category!),
+            let date = classObject.date,
+            let duration = Duration(rawValue: classObject.duration!),
+            let intensity = Intensity(rawValue: classObject.intensityLevel!),
+            let location = classObject.location
+            else {return}
+            
+        let classO = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensity, location: location)!
+        classController.updateClassType(with: classO, classType: ClassType.clientClasses)
+    }
+    
+
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
     }
@@ -167,7 +191,7 @@ extension ClientSearchViewController: UISearchBarDelegate {
         
         context.performAndWait {
             classController.preformSearch(with: searchTerm) { (error) in
-                self.setViews()
+                self.setSearchViews()
             }
         }
     }
