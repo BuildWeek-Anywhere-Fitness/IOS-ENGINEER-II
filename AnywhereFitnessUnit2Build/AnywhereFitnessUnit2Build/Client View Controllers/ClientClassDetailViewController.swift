@@ -28,7 +28,18 @@ class ClientClassDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
+        
+    }
+    
+    private func setViews() {
+        guard let classObject = classObject else {return}
+        
+        classLabel.text = classObject.name
+        durationLabel.text = classObject.duration
+        intensityLabel.text = classObject.intensityLevel
+        categoryLabel.text = classObject.category
+        dateLabel.text = "\(classObject.date ?? Date())"
+        locationLabel.text = classObject.location
     }
     
     @IBAction func dontButtonTapped(_ sender: UIButton) {

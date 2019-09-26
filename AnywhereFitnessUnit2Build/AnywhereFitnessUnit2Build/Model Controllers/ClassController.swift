@@ -12,6 +12,8 @@ import CoreData
 
 class ClassController {
     
+    var classObject: [ClassRepresentation]?
+    
     var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
     
     var dateFormatter: DateFormatter {
@@ -22,6 +24,50 @@ class ClassController {
     }
     
     let baseURL = URL(string: "https://anywhere-health.herokuapp.com/api/")!
+    
+    func preformSearch(with searchTerm: String, completion: @escaping (Result<[ClassRepresentation], NetworkError>) -> Void) {
+        
+       let requestURL = baseURL.appendingPathComponent("classes")
+                                .appendingPathComponent(searchTerm)
+        
+        
+        var request = URLRequest(url: requestURL)
+        request.httpMethod = HTTPMethod.get.rawValue
+        
+        // data task not ran yet
+        URLSession.shared.dataTask(with: request) { (data, _, error) in
+            
+            // check to see that we can connect to the api for search, this is happeneing after the data task has run.
+            if let error = error {
+                NSLog("Error retrieving searched object: \(error)")
+            }
+            
+            //check to see if we recieved the results from the search
+            guard let data = data else {
+                NSLog("No data returned from search.")
+                completion(.failure(.noData))
+                return
+            }
+            
+            // decode the data
+            
+            
+            do {
+                let decoder = JSONDecoder()
+                let classObject = try decoder.decode([ClassRepresentation].self, from: data)
+                self.classObject = classObject
+                completion(.success(classObject))
+                
+            } catch {
+                NSLog("Error retriving the results to your search: \(error)")
+                completion(.failure(.noData))
+                return
+            }
+            
+            
+            }.resume()
+        
+    }
     
     // POST classs to server
     func postClassOnServer(postClass: ClassRepresentation, completion: @escaping () -> Void = { }) {
@@ -250,7 +296,7 @@ class ClassController {
     
     // Create
     
-    func createClass(with name: String, location: String, intensityLevel: Intensity, duration: Duration , date: Date, category: Category, classType: ClassType) {
+    func createClass(with name: String, location: String, intensityLevel: Intensity, duration: Duration , date: Date, category: Category, classType: ClassType?) {
         
         guard let classObject = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensityLevel, location: location, classType: classType) else {return}
         
@@ -268,6 +314,14 @@ class ClassController {
         classObject.duration = duration.rawValue
         classObject.date = date
         classObject.category = category.rawValue
+        
+        CoreDataStack.shared.save()
+        
+    }
+    
+    func updateClassType(with classObject: Class, classType: ClassType? = nil) {
+        
+        classObject.classType = classType?.rawValue
         
         CoreDataStack.shared.save()
         

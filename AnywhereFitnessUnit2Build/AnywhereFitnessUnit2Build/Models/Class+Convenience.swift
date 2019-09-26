@@ -39,16 +39,7 @@ enum ClassType: String, CaseIterable {
 extension Class {
     
     var classRepresentation: ClassRepresentation? {
-        
-        guard let name = name,
-            let location = location,
-            let date = date,
-            let duration = duration,
-            let intensity = intensityLevel,
-            let category = category
-            else { return nil }
-        
-        return ClassRepresentation(name: name, location: location, date: date, duration: duration, intensityLevel: intensity, category: category, identifier: Int(identifier))
+        return ClassRepresentation(name: name, location: location, date: date, duration: duration, intensityLevel: intensityLevel, category: category, identifier: Int(identifier))
     }
     
     @discardableResult convenience init?(name: String, category: Category, date: Date, duration: Duration, intensityLevel: Intensity, location: String, classType: ClassType? = ClassType.trainerClasses, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {

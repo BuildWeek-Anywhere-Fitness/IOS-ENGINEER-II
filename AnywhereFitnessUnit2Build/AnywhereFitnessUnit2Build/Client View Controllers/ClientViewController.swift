@@ -19,11 +19,13 @@ class ClientViewController: UIViewController {
     
     var classType: ClassType = ClassType.clientClasses
     
+    
+    
     lazy var fetch: NSFetchedResultsController<Class> = {
         
         let request: NSFetchRequest<Class> = Class.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
-        request.predicate = NSPredicate(format: "classType == clientClasses")
+        request.predicate = NSPredicate(format: "classType == %@", classType.rawValue)
         // basically sorts everything
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -58,6 +60,9 @@ class ClientViewController: UIViewController {
             guard let destination = segue.destination as? ClientClassDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else {return}
             destination.classObject = fetch.object(at: indexPath)
+        } else if segue.identifier == "ClientSearchModalSearch" {
+            guard let destination = segue.destination as? ClientSearchViewController else {return}
+            destination.classController = classController
         }
     }
    

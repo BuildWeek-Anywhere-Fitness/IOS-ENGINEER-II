@@ -70,6 +70,7 @@
 		38B7E33F2339939F00327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AnywhereFitnessUnit2Build/Storyboard/Base.lproj/ClientClassDetail.storyboard; sourceTree = "<group>"; };
 		38B7E341233993C100327162 /* TrainerClassDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainerClassDetail.storyboard; sourceTree = "<group>"; };
 		38B7E3442339944400327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AnywhereFitnessUnit2Build/Storyboard/Base.lproj/TrainerHome.storyboard; sourceTree = "<group>"; };
+		38D5496B233C7457001E76A7 /* ClientTrainerClass+ClassType 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ClientTrainerClass+ClassType 2.xcdatamodel"; sourceTree = "<group>"; };
 		F59CEA2A233984460090D819 /* ClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassController.swift; sourceTree = "<group>"; };
 		F5B546AF233A7EEE001FA79A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
 		F5B546B1233A8971001FA79A /* Client+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+Convenience.swift"; sourceTree = "<group>"; };
@@ -539,11 +540,12 @@
 		38B7E31B23393FD500327162 /* ClientTrainerClass.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				38D5496B233C7457001E76A7 /* ClientTrainerClass+ClassType 2.xcdatamodel */,
 				38A5CF44233BC2FE00A8F66F /* ClientTrainerClass+ClassType.xcdatamodel */,
 				38A5CF41233B41E400A8F66F /* ClientTrainerClass+ClassList.xcdatamodel */,
 				38B7E31C23393FD500327162 /* ClientTrainerClass.xcdatamodel */,
 			);
-			currentVersion = 38A5CF44233BC2FE00A8F66F /* ClientTrainerClass+ClassType.xcdatamodel */;
+			currentVersion = 38D5496B233C7457001E76A7 /* ClientTrainerClass+ClassType 2.xcdatamodel */;
 			path = ClientTrainerClass.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

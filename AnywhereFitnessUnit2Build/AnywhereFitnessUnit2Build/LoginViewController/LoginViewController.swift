@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginRegisterButton: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    var clientHome = ClientViewController()
+    
     var isLogin: Bool = true
     var userController = UserController()
     
@@ -39,6 +41,7 @@ class LoginViewController: UIViewController {
             }
             
             dismiss(animated: true, completion: nil)
+            
             
         } else  if segmentedControl.selectedSegmentIndex == 1 {
             if isLogin {
