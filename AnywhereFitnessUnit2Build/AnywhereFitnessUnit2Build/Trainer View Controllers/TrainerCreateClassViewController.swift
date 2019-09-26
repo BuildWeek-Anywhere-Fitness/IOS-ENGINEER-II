@@ -11,6 +11,7 @@ import UIKit
 class TrainerCreateClassViewController: UIViewController {
     
     var classController: ClassController?
+    var userController: UserController?
     
     var classObject: Class? {
         didSet {
@@ -81,9 +82,11 @@ class TrainerCreateClassViewController: UIViewController {
             else {return}
         
         if let classObject = classObject {
-            classController?.updateClass(with: classObject, name: name, location: location, intesityLevel: intesity, duration: duration, date: date, category: category)
+            guard let user = userController?.trainer else {return}
+            classController?.updateClass(with: classObject, name: name, location: location, intesityLevel: intesity, duration: duration, date: date, category: category, trainer: user)
         } else {
-            classController?.createClass(with: name, location: location, intensityLevel: intesity, duration: duration, date: date, category: category, classType: ClassType.clientClasses)
+            guard let user = userController?.trainer else {return}
+            classController?.createClass(with: name, location: location, intensityLevel: intesity, duration: duration, date: date, category: category, classType: ClassType.clientClasses, trainer: user)
             
         }
         self.dismiss(animated: true, completion: nil)

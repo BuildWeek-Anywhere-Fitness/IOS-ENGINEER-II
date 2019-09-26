@@ -27,7 +27,7 @@ class ClientClassDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setViews()
         
     }
     
@@ -43,7 +43,7 @@ class ClientClassDetailViewController: UIViewController {
     }
     
     @IBAction func dontButtonTapped(_ sender: UIButton) {
-        
+        dismiss(animated: true, completion: nil)
     }
     
 }

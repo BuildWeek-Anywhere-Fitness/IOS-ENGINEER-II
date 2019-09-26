@@ -25,6 +25,8 @@ class ClientSearchViewController: UIViewController {
     @IBOutlet weak var addClassButton: UIButton!
     
     var classController = ClassController()
+    var userController: UserController?
+    
     lazy var fetch: NSFetchedResultsController<Class> = {
         
         let request: NSFetchRequest<Class> = Class.fetchRequest()
@@ -83,7 +85,7 @@ class ClientSearchViewController: UIViewController {
     }
     
     @IBAction func addClassButtonTapped(_ sender: UIButton) {
-        guard let classObjects = classController.classObject else {return}
+        guard let classObjects = classController.classObject, let trainer = userController?.trainer else {return}
         
         let classObject = classObjects[0]
         
@@ -96,7 +98,7 @@ class ClientSearchViewController: UIViewController {
             else {return}
             
         let classO = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensity, location: location)!
-        classController.updateClass(with: classO, name: name, location: location, intesityLevel: intensity, duration: duration, date: date, category: category)
+        classController.updateClass(with: classO, name: name, location: location, intesityLevel: intensity, duration: duration, date: date, category: category, trainer: trainer)
     }
     
 
@@ -121,6 +123,7 @@ extension ClientSearchViewController: UITableViewDataSource {
         
         let classObject = fetch.object(at: indexPath)
         
+        cell.heightAnchor.constraint(equalToConstant: 109)
         cell.textLabel?.text = classObject.name
         
         return cell

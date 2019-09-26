@@ -26,6 +26,17 @@
                                     <action selector="doneButtonTapped:" destination="x1C-1n-N3d" eventType="touchUpInside" id="OA4-8G-cQD"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BJ-Bd-v22">
+                                <rect key="frame" x="40" y="719" width="334" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="2aI-sd-QTo"/>
+                                </constraints>
+                                <state key="normal" title="Add Class"/>
+                                <connections>
+                                    <action selector="addClassButtonTapped:" destination="x1C-1n-N3d" eventType="touchUpInside" id="YaK-K0-kgi"/>
+                                    <action selector="doneButtonTapped:" destination="x1C-1n-N3d" eventType="touchUpInside" id="UIw-eO-96V"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Search for a classpack!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZG-FT-5XI">
                                 <rect key="frame" x="40" y="101" width="334" height="27.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="23"/>
@@ -144,8 +155,8 @@
                                 </constraints>
                                 <textInputTraits key="textInputTraits"/>
                             </searchBar>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bd2-lj-MPM">
-                                <rect key="frame" x="40" y="199" width="334" height="500"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bd2-lj-MPM">
+                                <rect key="frame" x="40" y="423" width="334" height="500"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="68" translatesAutoresizingMaskIntoConstraints="NO" id="cjL-v0-5X0">
                                         <rect key="frame" x="30" y="8" width="274" height="463"/>
@@ -295,17 +306,6 @@
                                     <constraint firstItem="cjL-v0-5X0" firstAttribute="leading" secondItem="bd2-lj-MPM" secondAttribute="leading" constant="30" id="Z9V-2V-uIF"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1BJ-Bd-v22">
-                                <rect key="frame" x="40" y="719" width="334" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="2aI-sd-QTo"/>
-                                </constraints>
-                                <state key="normal" title="Add Class"/>
-                                <connections>
-                                    <action selector="addClassButtonTapped:" destination="x1C-1n-N3d" eventType="touchUpInside" id="YaK-K0-kgi"/>
-                                    <action selector="doneButtonTapped:" destination="x1C-1n-N3d" eventType="touchUpInside" id="UIw-eO-96V"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>

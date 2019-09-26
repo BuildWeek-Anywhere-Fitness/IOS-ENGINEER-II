@@ -151,7 +151,7 @@ class ClassController {
     }
     
     // adding class to server
-    func put(classObject: Class, completion: @escaping () -> Void = { }) {
+    func put(classObject: Class, trainer: TrainerRepresentation, completion: @escaping () -> Void = { }) {
         
         let requestURL = baseURL
             .appendingPathComponent("classes")
@@ -305,17 +305,17 @@ class ClassController {
     
     // Create
     
-    func createClass(with name: String, location: String, intensityLevel: Intensity, duration: Duration , date: Date, category: Category, classType: ClassType?) {
+    func createClass(with name: String, location: String, intensityLevel: Intensity, duration: Duration , date: Date, category: Category, classType: ClassType?, trainer: TrainerRepresentation) {
         
         guard let classObject = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensityLevel, location: location, classType: classType) else {return}
         
         CoreDataStack.shared.save()
-        put(classObject: classObject)
+        put(classObject: classObject, trainer: trainer)
     }
     
     // UPDATE
     
-    func updateClass(with classObject: Class, name: String, location: String, intesityLevel: Intensity, duration: Duration, date: Date, category: Category) {
+    func updateClass(with classObject: Class, name: String, location: String, intesityLevel: Intensity, duration: Duration, date: Date, category: Category, trainer: TrainerRepresentation) {
         
         classObject.name = name
         classObject.location = location
@@ -325,7 +325,7 @@ class ClassController {
         classObject.category = category.rawValue
         
         CoreDataStack.shared.save()
-        self.put(classObject: classObject)
+        self.put(classObject: classObject, trainer: trainer)
     }
     
     func updateClassType(with classObject: Class, classType: ClassType? = nil) {

@@ -13,6 +13,8 @@ class TrainerViewController: UIViewController {
     
     let classController = ClassController()
     
+    var userController: UserController?
+    
     var classType = ClassType.trainerClasses
     
 	 lazy var fetch: NSFetchedResultsController<Class> = {
@@ -56,6 +58,7 @@ class TrainerViewController: UIViewController {
         if segue.identifier == "TrainerCreateClassModalSegue" {
             guard let destination = segue.destination as? TrainerCreateClassViewController else {return}
             destination.classController = classController
+            destination.userController = userController
         }
     }
     

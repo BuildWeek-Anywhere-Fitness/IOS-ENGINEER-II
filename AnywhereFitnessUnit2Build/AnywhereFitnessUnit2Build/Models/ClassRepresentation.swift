@@ -17,6 +17,7 @@ struct ClassRepresentation: Codable {
 	let intensityLevel: String?
 	let category: String?
 	let identifier: Int?
+    let instructorID: Int?
 		
 		enum CodingKeys: String, CodingKey {
 			case name = "name"
@@ -24,8 +25,9 @@ struct ClassRepresentation: Codable {
             case duration = "duration"
             case category = "type"
             case intensityLevel = "intensity"
-            case identifier = "instructor_id"
+            case identifier = "id"
             case date = "starttime"
+            case instructorID = "instructor_id"
 		}
 	
 }

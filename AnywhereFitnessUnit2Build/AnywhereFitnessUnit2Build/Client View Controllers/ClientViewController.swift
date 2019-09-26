@@ -16,6 +16,7 @@ class ClientViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     
     var classController = ClassController()
+    var userController: UserController?
     
     var classType: ClassType = ClassType.clientClasses
     
@@ -50,12 +51,6 @@ class ClientViewController: UIViewController {
         tableView.reloadData()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        performSegue(withIdentifier: "ClientLoginModalSegue", sender: self)
-    }
-    
     @IBAction func searchForAClassButtonTapped(_ sender: UIButton) {
       performSegue(withIdentifier: "ClientSearchModalSearch", sender: sender)
         
@@ -69,6 +64,7 @@ class ClientViewController: UIViewController {
         } else if segue.identifier == "ClientSearchModalSearch" {
             guard let destination = segue.destination as? ClientSearchViewController else {return}
             destination.classController = classController
+            destination.userController = userController
         }
     }
    
