@@ -29,6 +29,8 @@ class LoginViewController: UIViewController {
     
     private func setViews() {
         loginRegisterButton.setTitle("Login", for: .normal)
+        loginRegisterButton.setTitleColor(.white, for: .normal)
+        loginRegisterButton.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {

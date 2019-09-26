@@ -18,10 +18,11 @@ extension Client {
         return ClientRepresentation(email: email, username: username, password: password)
     }
 	
-	@discardableResult convenience init?(username: String, password: String, email: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(username: String, password: String, email: String, trainer: Bool = false, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		
 		self.init(context: context)
-		
+        
+        self.trainer = trainer
 		self.username = username
 		self.password = password
 		self.email = email

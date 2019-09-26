@@ -109,7 +109,9 @@ class ClassController {
 //                        let intensity = postClass.intensityLevel,
 //                        let location = postClass.location,
 //                        let identifier = classID.first else { return }
-//                    Class(name: name, category: Category(rawValue: category)!, date: date, duration: Duration(rawValue: duration)!, intensityLevel: Intensity(rawValue: intensity)!, location: location, identifier: Int32(identifier))                }
+//                    Class(name: name, category: Category(rawValue: category)!, date: date, duration: Duration(rawValue: duration)!, intensityLevel: Intensity(rawValue: intensity)!, location: location, identifier: Int32(identifier))
+//                    
+//                }
 //
 //                CoreDataStack.shared.save(context: context)
 //            } catch {
@@ -149,17 +151,17 @@ class ClassController {
     }
     
     // adding class to server
-    func put(class: Class, completion: @escaping () -> Void = { }) {
+    func put(classObject: Class, completion: @escaping () -> Void = { }) {
         
         let requestURL = baseURL
             .appendingPathComponent("classes")
         
         var request = URLRequest(url: requestURL)
-        request.httpMethod = HTTPMethod.put.rawValue
+        request.httpMethod = HTTPMethod.post.rawValue
         
-        let classClass = Class()
         
-        guard let classRepresentation = classClass.classRepresentation else {
+        
+        guard let classRepresentation = classObject.classRepresentation else {
             NSLog("Task Representation is nil")
             completion()
             return
@@ -175,7 +177,14 @@ class ClassController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { (_, _, error) in
+        URLSession.shared.dataTask(with: request) { (_, response, error) in
+            
+            if let response = response as? HTTPURLResponse,
+                           response.statusCode != 201 {
+                           print(response.statusCode)
+                           completion()
+                           return
+                       }
             
             if let error = error {
                 NSLog("Error PUTting task: \(error)")
@@ -301,7 +310,7 @@ class ClassController {
         guard let classObject = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensityLevel, location: location, classType: classType) else {return}
         
         CoreDataStack.shared.save()
-        put(class: classObject)
+        put(classObject: classObject)
     }
     
     // UPDATE
@@ -316,7 +325,7 @@ class ClassController {
         classObject.category = category.rawValue
         
         CoreDataStack.shared.save()
-        
+        self.put(classObject: classObject)
     }
     
     func updateClassType(with classObject: Class, classType: ClassType? = nil) {

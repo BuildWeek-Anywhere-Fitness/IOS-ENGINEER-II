@@ -45,6 +45,8 @@ class ClientSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+//        tableView.delegate = self
+        tableView.dataSource = self
         searchBar.delegate = self
         classDetailStackView.isHidden = true
         viewLayover.isHidden = true
@@ -82,7 +84,9 @@ class ClientSearchViewController: UIViewController {
     
     @IBAction func addClassButtonTapped(_ sender: UIButton) {
         guard let classObjects = classController.classObject else {return}
+        
         let classObject = classObjects[0]
+        
         guard let name = classObject.name,
             let category = Category(rawValue: classObject.category!),
             let date = classObject.date,
@@ -92,7 +96,7 @@ class ClientSearchViewController: UIViewController {
             else {return}
             
         let classO = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensity, location: location)!
-        classController.updateClassType(with: classO, classType: ClassType.clientClasses)
+        classController.updateClass(with: classO, name: name, location: location, intesityLevel: intensity, duration: duration, date: date, category: category)
     }
     
 
@@ -113,7 +117,7 @@ extension ClientSearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrainerCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath)
         
         let classObject = fetch.object(at: indexPath)
         

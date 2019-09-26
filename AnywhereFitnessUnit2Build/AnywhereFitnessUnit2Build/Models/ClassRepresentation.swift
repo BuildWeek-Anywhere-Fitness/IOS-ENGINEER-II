@@ -24,7 +24,7 @@ struct ClassRepresentation: Codable {
             case duration = "duration"
             case category = "type"
             case intensityLevel = "intensity"
-            case identifier = "id"
+            case identifier = "instructor_id"
             case date = "starttime"
 		}
 	

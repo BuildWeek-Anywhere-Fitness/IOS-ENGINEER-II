@@ -88,6 +88,13 @@ extension TrainerViewController: UITableViewDataSource {
 		
 		return cellObjectInfo.name.capitalized
 	}
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+              if editingStyle == .delete {
+                  let classObject = fetch.object(at: indexPath)
+                  classController.deleteClass(classObject: classObject)
+              }
+          }
 }
 
 extension TrainerViewController: NSFetchedResultsControllerDelegate {

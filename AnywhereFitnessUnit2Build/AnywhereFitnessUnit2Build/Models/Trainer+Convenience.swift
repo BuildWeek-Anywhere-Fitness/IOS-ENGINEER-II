@@ -18,10 +18,11 @@ extension Trainer {
 		return TrainerRepresentation(email: email, username: username, password: password)
     }
 	
-	@discardableResult convenience init?(username: String, password: String, email: String, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
+    @discardableResult convenience init?(username: String, password: String, email: String, identifier: Int32? = nil, context: NSManagedObjectContext = CoreDataStack.shared.mainContext) {
 		
 		self.init(context: context)
 		
+        self.identifier = identifier
 		self.username = username
 		self.password = password
 		self.email = email

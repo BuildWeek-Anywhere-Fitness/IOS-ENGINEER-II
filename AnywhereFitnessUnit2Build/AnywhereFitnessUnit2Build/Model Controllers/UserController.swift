@@ -32,6 +32,7 @@ enum LoginType: String {
 
 class UserController {
     
+    var id: Int?
     var token: String?
     var client: ClientRepresentation?
     var trainer: TrainerRepresentation?
@@ -127,7 +128,7 @@ class UserController {
                 completion(.failure(.noToken))
                 return
             }
-        }
+        }.resume()
     }
     
     func trainerSignUp(with trainer: TrainerRepresentation, loginType: LoginType, completion: @escaping (Result<String, NetworkError>) -> (Void)) {
@@ -200,6 +201,7 @@ class UserController {
             
             do {
                 let result = try JSONDecoder().decode(TrainerResult.self, from: data)
+                self.id = trainer.identifier
                 self.trainer = trainer
                 self.token = result.token
                 let context = CoreDataStack.shared.mainContext

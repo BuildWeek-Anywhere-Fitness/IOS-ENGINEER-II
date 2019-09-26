@@ -19,7 +19,7 @@ class ClientViewController: UIViewController {
     
     var classType: ClassType = ClassType.clientClasses
     
-    
+    var isLogin = true
     
     lazy var fetch: NSFetchedResultsController<Class> = {
         
@@ -42,12 +42,18 @@ class ClientViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        
         performSegue(withIdentifier: "ClientLoginModalSegue", sender: self)
-
     }
     
     @IBAction func searchForAClassButtonTapped(_ sender: UIButton) {
@@ -79,7 +85,7 @@ extension ClientViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrainerCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath)
         
         let classObject = fetch.object(at: indexPath)
         
@@ -94,6 +100,13 @@ extension ClientViewController: UITableViewDataSource {
         
         return cellObjectInfo.name.capitalized
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+           if editingStyle == .delete {
+               let classObject = fetch.object(at: indexPath)
+               classController.deleteClass(classObject: classObject)
+           }
+       }
 }
 
 extension ClientViewController: NSFetchedResultsControllerDelegate {
