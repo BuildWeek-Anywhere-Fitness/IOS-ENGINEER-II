@@ -17,11 +17,10 @@ class TrainerViewController: UIViewController {
     
     var classType = ClassType.trainerClasses
     
-    lazy var fetch: NSFetchedResultsController<Class> = {
+   lazy var fetch: NSFetchedResultsController<Class> = {
         
         let request: NSFetchRequest<Class> = Class.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
-        request.predicate = NSPredicate(format: "classType == %@", classType.rawValue)
         // basically sorts everything
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         

@@ -30,7 +30,10 @@ class SearchTableViewCell: UITableViewCell {
     
     private func setViews() {
         
-        
+        if classObject?.classType == ClassType.clientClasses.rawValue {
+            isAdded = true
+        }
+
         
         guard let classObject = classObject else {return}
         
@@ -38,12 +41,10 @@ class SearchTableViewCell: UITableViewCell {
         durationLabel.text = classObject.duration
         intensityLabel.text = classObject.intensityLevel
         categoryLabel.text = classObject.category
-        
+                
         if isAdded == false {
             addClassButton.setBackgroundImage(#imageLiteral(resourceName: "empty"), for: .normal)
         } else if isAdded == true {
-            addClassButton.setBackgroundImage(#imageLiteral(resourceName: "green"), for: .normal)
-        } else if classObject.classType == ClassType.clientClasses.rawValue {
             addClassButton.setBackgroundImage(#imageLiteral(resourceName: "green"), for: .normal)
         }
         
@@ -53,13 +54,12 @@ class SearchTableViewCell: UITableViewCell {
         
         if isAdded == false {
             classController.updateClassType(with: classObject, classType: ClassType.clientClasses)
-            isAdded = true
             setViews()
         } else {
             classController.updateClassType(with: classObject)
-            isAdded = false
             setViews()
         }
+        isAdded = !isAdded
     }
     
 }

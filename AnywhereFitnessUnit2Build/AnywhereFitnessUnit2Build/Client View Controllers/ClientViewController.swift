@@ -109,7 +109,7 @@ extension ClientViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             let classObject = fetch.object(at: indexPath)
-            classController.deleteClass(classObject: classObject)
+            classController.updateClassType(with: classObject, classType: nil)
         }
     }
     
