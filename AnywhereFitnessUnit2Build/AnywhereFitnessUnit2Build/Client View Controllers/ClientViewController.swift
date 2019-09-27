@@ -16,14 +16,17 @@ class ClientViewController: UIViewController {
     @IBOutlet weak var welcomeLabel: UILabel!
     
     var classController = ClassController()
+    var userController: UserController?
     
     var classType: ClassType = ClassType.clientClasses
+    
+    var isLogin = true
     
     lazy var fetch: NSFetchedResultsController<Class> = {
         
         let request: NSFetchRequest<Class> = Class.fetchRequest()
         request.sortDescriptors = [NSSortDescriptor(key: "category", ascending: true)]
-        request.predicate = NSPredicate(format: "classType == clientClasses")
+        request.predicate = NSPredicate(format: "classType == %@", classType.rawValue)
         // basically sorts everything
         let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: CoreDataStack.shared.mainContext, sectionNameKeyPath: nil, cacheName: nil)
         
@@ -40,16 +43,25 @@ class ClientViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.dataSource = self
+        setViews()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        performSegue(withIdentifier: "ClientLoginModalSegue", sender: self)
-
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
     }
+    
+    private func setViews() {
+          searchForAClassButton.backgroundColor = #colorLiteral(red: 0.1839953661, green: 0.7992369533, blue: 0.443231672, alpha: 1)
+                  searchForAClassButton.setTitle("SEARCH CLASSES", for: .normal)
+            searchForAClassButton.setTitleColor(.white, for: .normal)
+                searchForAClassButton.layer.cornerRadius = 6
+
+       }
     
     @IBAction func searchForAClassButtonTapped(_ sender: UIButton) {
-      performSegue(withIdentifier: "ClientSearchModalSearch", sender: sender)
+        performSegue(withIdentifier: "ClientSearchModalSearch", sender: sender)
         
     }
     
@@ -58,9 +70,13 @@ class ClientViewController: UIViewController {
             guard let destination = segue.destination as? ClientClassDetailViewController,
                 let indexPath = tableView.indexPathForSelectedRow else {return}
             destination.classObject = fetch.object(at: indexPath)
+        } else if segue.identifier == "ClientSearchModalSearch" {
+            guard let destination = segue.destination as? ClientSearchViewController else {return}
+            destination.classController = classController
+            destination.userController = userController
         }
     }
-   
+    
 }
 
 extension ClientViewController: UITableViewDataSource {
@@ -74,21 +90,36 @@ extension ClientViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrainerCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ClientCell", for: indexPath) as? ClientHomeTableViewCell else {return UITableViewCell()}
         
-        let classObject = fetch.object(at: indexPath)
+        cell.classObject = fetch.object(at: indexPath)
         
-        cell.textLabel?.text = classObject.name
+        
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
         guard let cellObjectInfo = fetch.sections?[section] else { return nil }
         
         return cellObjectInfo.name.capitalized
     }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let classObject = fetch.object(at: indexPath)
+            classController.deleteClass(classObject: classObject)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int){
+        view.tintColor = .green
+        let header = view as!
+        UITableViewHeaderFooterView
+        header.textLabel?.textColor = .white
+    }
+    
 }
 
 extension ClientViewController: NSFetchedResultsControllerDelegate {

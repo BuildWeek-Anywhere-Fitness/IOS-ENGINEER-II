@@ -32,6 +32,7 @@ enum LoginType: String {
 
 class UserController {
     
+    var id: Int?
     var token: String?
     var client: ClientRepresentation?
     var trainer: TrainerRepresentation?
@@ -127,7 +128,7 @@ class UserController {
                 completion(.failure(.noToken))
                 return
             }
-        }
+        }.resume()
     }
     
     func trainerSignUp(with trainer: TrainerRepresentation, loginType: LoginType, completion: @escaping (Result<String, NetworkError>) -> (Void)) {
@@ -146,9 +147,10 @@ class UserController {
             return
         }
         
-        URLSession.shared.dataTask(with: request) { (_, response, error) in
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 201 {
+                print("\(response.statusCode)")
                 completion(.failure(.responseError))
                 return
             }
@@ -158,7 +160,20 @@ class UserController {
                 completion(.failure(.signUpError))
                 return
             }
-            completion(.success("login successful"))
+            
+            guard let data = data else {return}
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let trainer = try decoder.decode(TrainerRepresentation.self, from: data)
+                self.trainer = trainer
+                // Take the trainerrep above and initialize a Trainer
+                
+                // Save the context
+            } catch {
+                NSLog("error decoding trianer: \(error)")
+            }
         }.resume()
     }
     
@@ -183,7 +198,8 @@ class UserController {
             
             if let response = response as? HTTPURLResponse,
                 response.statusCode != 200 {
-                completion(.success(""))
+                print(response.statusCode)
+                completion(.failure(.responseError))
                 return
             }
             
@@ -202,6 +218,7 @@ class UserController {
                 let result = try JSONDecoder().decode(TrainerResult.self, from: data)
                 self.trainer = trainer
                 self.token = result.token
+                
                 let context = CoreDataStack.shared.mainContext
                 
                 context.performAndWait {

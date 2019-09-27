@@ -16,18 +16,46 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var addClassButton: UIButton!
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    var classController: ClassController?
+    
+    var classObject: Class? {
+        didSet {
+            setViews()
+        }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    var isAdded = false
+    
+    private func setViews() {
+        
+        
+        
+        guard let classObject = classObject else {return}
+        
+        classNameLabel.text = classObject.name
+        durationLabel.text = classObject.duration
+        intensityLabel.text = classObject.intensityLevel
+        categoryLabel.text = classObject.category
+        
+        if isAdded == false {
+            addClassButton.setBackgroundImage(#imageLiteral(resourceName: "empty"), for: .normal)
+        } else {
+            addClassButton.setBackgroundImage(#imageLiteral(resourceName: "green"), for: .normal)
+        }
+        
     }
     @IBAction func addClassButtonTapped(_ sender: UIButton) {
+        guard let classObject = classObject else {return}
         
+        if isAdded == false {
+            classController?.updateClassType(with: classObject, classType: ClassType.clientClasses)
+            isAdded = true
+            setViews()
+        } else {
+            classController?.updateClassType(with: classObject)
+            isAdded = false
+            setViews()
+        }
     }
     
 }

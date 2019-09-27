@@ -13,8 +13,18 @@ struct ClientResult: Codable {
 }
 
 struct ClientRepresentation: Equatable, Codable {
-	let email: String
-	let username: String
-	let password: String
+    let email: String?
+    let username: String?
+    let password: String?
+    let instructor: Bool?
+    let identifier: Int?
+    
+    enum CodingKeys: String, CodingKey {
+        case email = "email"
+        case username = "username"
+        case password = "password"
+        case instructor = "instructor"
+        case identifier = "id"
+    }
 }
 

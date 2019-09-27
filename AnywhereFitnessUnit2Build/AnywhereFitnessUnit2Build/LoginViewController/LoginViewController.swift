@@ -16,6 +16,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginRegisterButton: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
+    var clientHome = ClientViewController()
+    
     var isLogin: Bool = true
     var userController = UserController()
     
@@ -27,6 +29,8 @@ class LoginViewController: UIViewController {
     
     private func setViews() {
         loginRegisterButton.setTitle("Login", for: .normal)
+        loginRegisterButton.setTitleColor(.white, for: .normal)
+        loginRegisterButton.backgroundColor = #colorLiteral(red: 0.4152600169, green: 0.4127962291, blue: 0.4171569943, alpha: 1)
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -38,7 +42,6 @@ class LoginViewController: UIViewController {
                 clientRegister()
             }
             
-            dismiss(animated: true, completion: nil)
             
         } else  if segmentedControl.selectedSegmentIndex == 1 {
             if isLogin {
@@ -46,8 +49,6 @@ class LoginViewController: UIViewController {
             } else {
                 trainerRegister()
             }
-            
-            performSegue(withIdentifier: "TrainerLoginSegue", sender: self)
         }
         
     }
@@ -55,12 +56,24 @@ class LoginViewController: UIViewController {
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         
         isLogin = !isLogin
+        
         if isLogin == true{
             loginRegisterButton.setTitle("Login", for: .normal)
         } else {
-        loginRegisterButton.setTitle("Register", for: .normal)
+            loginRegisterButton.setTitle("Register", for: .normal)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "TrainerLoginSegue" {
+            guard let destination = segue.destination as? TrainerViewController else {return}
+            destination.userController = userController
+        } else  if segue.identifier == "ClientLoginSegue" {
+            guard let destination = segue.destination as? ClientViewController else {return}
+            destination.userController = userController
+        }
+    }
+    
     
     // MARK: - Methods
     func trainerLogin() {
@@ -73,11 +86,11 @@ class LoginViewController: UIViewController {
                 let password = passwordTextField.text,
                 !password.isEmpty else { return }
             
-            let user = TrainerRepresentation(email: email, username: username, password: password)
+            let user = TrainerRepresentation(email: email, username: username, password: password, instructor: true, identifier: nil)
             userController.trainerLogIn(with: user, loginType: .login, completion: { (result) in
                 if (try? result.get()) != nil {
                     DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
+                        self.performSegue(withIdentifier: "TrainerLoginSegue", sender: self)
                     }
                 } else {
                     NSLog("Error logging in with \(result)")
@@ -99,7 +112,7 @@ class LoginViewController: UIViewController {
                 let password = passwordTextField.text,
                 !password.isEmpty else { return }
             
-            let user = TrainerRepresentation(email: email, username: username, password: password)
+            let user = TrainerRepresentation(email: email, username: username, password: password, instructor: true, identifier: nil)
             userController.trainerSignUp(with: user, loginType: .register) { (error) in
                 if error == error {
                     NSLog("Error registering with \(error)")
@@ -127,11 +140,11 @@ class LoginViewController: UIViewController {
                 let password = passwordTextField.text,
                 !password.isEmpty else { return }
             
-            let user = ClientRepresentation(email: email, username: username, password: password)
+            let user = ClientRepresentation(email: email, username: username, password: password, instructor: false, identifier: nil)
             userController.clientLogIn(with: user, loginType: .login, completion: { (result) in
                 if (try? result.get()) != nil {
                     DispatchQueue.main.async {
-                        self.dismiss(animated: true, completion: nil)
+                        self.performSegue(withIdentifier: "ClientLoginSegue", sender: self)
                     }
                 } else {
                     NSLog("Error logging in with \(result)")
@@ -153,7 +166,7 @@ class LoginViewController: UIViewController {
                 let password = passwordTextField.text,
                 !password.isEmpty else { return }
             
-            let user = ClientRepresentation(email: email, username: username, password: password)
+            let user = ClientRepresentation(email: email, username: username, password: password, instructor: false, identifier: nil)
             userController.clientSignUp(with: user, loginType: .register) { (error) in
                 if error == error {
                     NSLog("Error registering with \(error)")
@@ -170,7 +183,6 @@ class LoginViewController: UIViewController {
             }
         }
     }
-    
     
     func completeFieldsChecker() -> Bool{
         
