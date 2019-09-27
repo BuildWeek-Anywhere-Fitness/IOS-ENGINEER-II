@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var loginRegisterButton: UIButton!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var registerLoginLabel: UILabel!
     
     var clientHome = ClientViewController()
     
@@ -28,9 +29,15 @@ class LoginViewController: UIViewController {
     }
     
     private func setViews() {
-        loginRegisterButton.setTitle("Login", for: .normal)
+        
+        view.backgroundColor = .white
+        
+       
+        loginRegisterButton.setTitle("LOGIN", for: .normal)
         loginRegisterButton.setTitleColor(.white, for: .normal)
-        loginRegisterButton.backgroundColor = #colorLiteral(red: 0.4152600169, green: 0.4127962291, blue: 0.4171569943, alpha: 1)
+        loginRegisterButton.backgroundColor = #colorLiteral(red: 0.1719937623, green: 0.799302876, blue: 0.4432982504, alpha: 1)
+        loginRegisterButton.alpha = 0.9
+        loginRegisterButton.layer.cornerRadius = 6
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
@@ -57,10 +64,12 @@ class LoginViewController: UIViewController {
         
         isLogin = !isLogin
         
-        if isLogin == true{
-            loginRegisterButton.setTitle("Login", for: .normal)
+        if isLogin == true {
+            loginRegisterButton.setTitle("LOGIN", for: .normal)
+            registerLoginLabel.text = "If you have not registered, please click"
         } else {
-            loginRegisterButton.setTitle("Register", for: .normal)
+            loginRegisterButton.setTitle("REGISTER", for: .normal)
+            registerLoginLabel.text = "If you would like to login, please click"
         }
     }
     
@@ -120,7 +129,7 @@ class LoginViewController: UIViewController {
                 self.userController.trainerLogIn(with: user, loginType: .login) { (result) in
                     if (try? result.get()) != nil {
                         DispatchQueue.main.async {
-                            self.dismiss(animated: true, completion: nil)
+                            self.performSegue(withIdentifier: "TrainerLoginSegue", sender: self)
                         }
                     } else {
                         NSLog("Error logging in with \(result)")

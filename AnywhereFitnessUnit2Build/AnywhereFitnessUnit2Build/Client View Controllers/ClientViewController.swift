@@ -53,12 +53,12 @@ class ClientViewController: UIViewController {
     }
     
     private func setViews() {
-          searchForAClassButton.backgroundColor = #colorLiteral(red: 0.1839953661, green: 0.7992369533, blue: 0.443231672, alpha: 1)
-                  searchForAClassButton.setTitle("SEARCH CLASSES", for: .normal)
-            searchForAClassButton.setTitleColor(.white, for: .normal)
-                searchForAClassButton.layer.cornerRadius = 6
-
-       }
+        searchForAClassButton.backgroundColor = #colorLiteral(red: 0.1839953661, green: 0.7992369533, blue: 0.443231672, alpha: 1)
+        searchForAClassButton.setTitle("SEARCH CLASSES", for: .normal)
+        searchForAClassButton.setTitleColor(.white, for: .normal)
+        searchForAClassButton.layer.cornerRadius = 6
+        
+    }
     
     @IBAction func searchForAClassButtonTapped(_ sender: UIButton) {
         performSegue(withIdentifier: "ClientSearchModalSearch", sender: sender)

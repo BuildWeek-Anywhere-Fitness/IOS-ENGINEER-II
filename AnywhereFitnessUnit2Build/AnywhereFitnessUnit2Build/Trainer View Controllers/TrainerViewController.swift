@@ -43,7 +43,7 @@ class TrainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        setViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -51,6 +51,12 @@ class TrainerViewController: UIViewController {
         tableView.reloadData()
     }
     
+    private func setViews() {
+        createAClassButton.backgroundColor = #colorLiteral(red: 0.1839953661, green: 0.7992369533, blue: 0.443231672, alpha: 1)
+        createAClassButton.setTitle("CREATE CLASS", for: .normal)
+        createAClassButton.setTitleColor(.white, for: .normal)
+        createAClassButton.layer.cornerRadius = 6
+    }
     
     // METHODS:
     
@@ -78,11 +84,11 @@ extension TrainerViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TrainerCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "TrainerCell", for: indexPath) as? TrainerHomeTableViewCell else {return UITableViewCell()}
         
-        let classObject = fetch.object(at: indexPath)
+        cell.classObject = fetch.object(at: indexPath)
         
-        cell.textLabel?.text = classObject.name
+        
         
         return cell
     }

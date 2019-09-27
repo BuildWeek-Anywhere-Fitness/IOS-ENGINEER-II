@@ -52,6 +52,11 @@ class TrainerCreateClassViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPickers()
+        
+        doneButton.backgroundColor = #colorLiteral(red: 0.1839953661, green: 0.7992369533, blue: 0.443231672, alpha: 1)
+        doneButton.setTitle("CREATE CLASS", for: .normal)
+        doneButton.setTitleColor(.white, for: .normal)
+        doneButton.layer.cornerRadius = 6
     }
     
     private func setViews() {
@@ -72,8 +77,6 @@ class TrainerCreateClassViewController: UIViewController {
     @IBAction func doneButtonTapped(_ sender: UIButton) {
         
         let date = datePicker.date
-        
-//        let classType = ClassType.clientClasses
         
         guard let name = classNameTextField.text,
             let category = Category(rawValue: categoryTextField.text!),

@@ -1,5 +1,5 @@
 //
-//  ClientHomeTableViewCell.swift
+//  TrainerHomeTableViewCell.swift
 //  AnywhereFitnessUnit2Build
 //
 //  Created by Alex Rhodes on 9/26/19.
@@ -8,13 +8,14 @@
 
 import UIKit
 
-class ClientHomeTableViewCell: UITableViewCell {
+class TrainerHomeTableViewCell: UITableViewCell {
+    
     
     @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
-   
+    
     var classController: ClassController?
     var classObject: Class? {
         didSet {
