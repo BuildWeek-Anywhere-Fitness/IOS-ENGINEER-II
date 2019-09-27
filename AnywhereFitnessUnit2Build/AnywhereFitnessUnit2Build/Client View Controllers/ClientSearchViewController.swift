@@ -15,7 +15,6 @@ class ClientSearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var doneButton: UIButton!
     @IBOutlet weak var classDetailStackView: UIStackView!
-    @IBOutlet weak var viewLayover: UIView!
     @IBOutlet weak var classNameLabel: UILabel!
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -23,6 +22,8 @@ class ClientSearchViewController: UIViewController {
     @IBOutlet weak var intensityLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var addClassButton: UIButton!
+    @IBOutlet weak var imageView: UIImageView!
+    
     
     var classController = ClassController()
     var userController: UserController?
@@ -47,12 +48,9 @@ class ClientSearchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        tableView.delegate = self
         tableView.dataSource = self
         searchBar.delegate = self
-        classDetailStackView.isHidden = true
-        viewLayover.isHidden = true
-        addClassButton.isHidden = true
+        setViews()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,16 +58,24 @@ class ClientSearchViewController: UIViewController {
         tableView.reloadData()
     }
     
-    private func setSearchViews() {
+    private func setViews() {
         
+        doneButton.backgroundColor = #colorLiteral(red: 0.1839953661, green: 0.7992369533, blue: 0.443231672, alpha: 1)
+        doneButton.setTitle("DONE", for: .normal)
+        doneButton.setTitleColor(.white, for: .normal)
+        doneButton.layer.cornerRadius = 6
+        
+        classDetailStackView.isHidden = true
+        addClassButton.isHidden = true
+        imageView.isHidden = true
+    }
+    private func setSearchViews() {
         DispatchQueue.main.async {
             if let classObject =  self.classController.classObject {
-                
-                self.tableView.isHidden = true
                 self.addClassButton.isHidden = false
                 self.addClassButton.setTitle("Add Class", for: .normal)
                 self.classDetailStackView.isHidden = false
-                self.viewLayover.isHidden = false
+                self.imageView.isHidden = false
                 for object in classObject {
                     self.classNameLabel.text = object.name
                     self.durationLabel.text = object.duration
@@ -119,12 +125,12 @@ extension ClientSearchViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as? SearchTableViewCell else {return UITableViewCell()}
         
         let classObject = fetch.object(at: indexPath)
         
-        cell.heightAnchor.constraint(equalToConstant: 109)
-        cell.textLabel?.text = classObject.name
+        cell.classObject = classObject
+       
         
         return cell
     }

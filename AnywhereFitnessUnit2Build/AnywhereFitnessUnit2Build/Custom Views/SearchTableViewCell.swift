@@ -18,23 +18,18 @@ class SearchTableViewCell: UITableViewCell {
     
     var classController: ClassController?
     
-    var classObject: Class?
+    var classObject: Class? {
+        didSet {
+            setViews()
+        }
+    }
     
     var isAdded = false
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        setViews()
-        
-    }
-    
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
     private func setViews() {
+        
+        
+        
         guard let classObject = classObject else {return}
         
         classNameLabel.text = classObject.name
@@ -42,10 +37,10 @@ class SearchTableViewCell: UITableViewCell {
         intensityLabel.text = classObject.intensityLevel
         categoryLabel.text = classObject.category
         
-        if isAdded {
-            addClassButton.setTitle("Add Class", for: .normal)
+        if isAdded == false {
+            addClassButton.setBackgroundImage(#imageLiteral(resourceName: "empty"), for: .normal)
         } else {
-            addClassButton.setTitle("RemoveClass", for: .normal)
+            addClassButton.setBackgroundImage(#imageLiteral(resourceName: "green"), for: .normal)
         }
         
     }
@@ -55,9 +50,11 @@ class SearchTableViewCell: UITableViewCell {
         if isAdded == false {
             classController?.updateClassType(with: classObject, classType: ClassType.clientClasses)
             isAdded = true
+            setViews()
         } else {
             classController?.updateClassType(with: classObject)
             isAdded = false
+            setViews()
         }
     }
     

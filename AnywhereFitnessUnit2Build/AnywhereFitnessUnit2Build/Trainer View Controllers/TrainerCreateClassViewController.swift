@@ -55,15 +55,17 @@ class TrainerCreateClassViewController: UIViewController {
     }
     
     private func setViews() {
-        if let classObject = classObject {
+        
+        guard let classObject = classObject else {return}
             
-            classNameTextField.text = classObject.name
-            categoryTextField.text = classObject.category
-            dateTextField.text = "\(String(describing: classObject.date))"
-            durationTextField.text = classObject.duration
-            intensityTextField.text = classObject.intensityLevel
-            locationTextField.text = classObject.location
-            
+        DispatchQueue.main.async {
+        
+            self.classNameTextField.text = classObject.name
+            self.categoryTextField.text = classObject.category
+            self.dateTextField.text = "\(String(describing: classObject.date))"
+            self.durationTextField.text = classObject.duration
+            self.intensityTextField.text = classObject.intensityLevel
+            self.locationTextField.text = classObject.location
         }
     }
     
@@ -82,7 +84,7 @@ class TrainerCreateClassViewController: UIViewController {
             else {return}
         
         if let classObject = classObject {
-            guard let user = userController?.trainer else {return}
+           guard let user = userController?.trainer else {return}
             classController?.updateClass(with: classObject, name: name, location: location, intesityLevel: intesity, duration: duration, date: date, category: category, trainer: user)
         } else {
             guard let user = userController?.trainer else {return}
