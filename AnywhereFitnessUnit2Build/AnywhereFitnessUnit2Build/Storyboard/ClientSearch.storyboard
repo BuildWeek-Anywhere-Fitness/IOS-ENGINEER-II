@@ -166,7 +166,7 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <searchBar contentMode="redraw" barStyle="blackTranslucent" searchBarStyle="minimal" placeholder="Serach for class by ID..." translatesAutoresizingMaskIntoConstraints="NO" id="0n0-2E-mUV">
+                            <searchBar alpha="0.75" contentMode="redraw" searchBarStyle="minimal" placeholder="Serach for class by ID..." translatesAutoresizingMaskIntoConstraints="NO" id="0n0-2E-mUV">
                                 <rect key="frame" x="40" y="143" width="334" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="lYJ-De-Myp"/>
