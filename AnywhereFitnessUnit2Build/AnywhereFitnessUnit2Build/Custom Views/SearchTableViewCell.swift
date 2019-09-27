@@ -16,7 +16,9 @@ class SearchTableViewCell: UITableViewCell {
     @IBOutlet weak var categoryLabel: UILabel!
     @IBOutlet weak var addClassButton: UIButton!
     
-    var classController: ClassController?
+    var classController = ClassController.shared
+    var classType: ClassType?
+    
     
     var classObject: Class? {
         didSet {
@@ -39,7 +41,9 @@ class SearchTableViewCell: UITableViewCell {
         
         if isAdded == false {
             addClassButton.setBackgroundImage(#imageLiteral(resourceName: "empty"), for: .normal)
-        } else {
+        } else if isAdded == true {
+            addClassButton.setBackgroundImage(#imageLiteral(resourceName: "green"), for: .normal)
+        } else if classObject.classType == ClassType.clientClasses.rawValue {
             addClassButton.setBackgroundImage(#imageLiteral(resourceName: "green"), for: .normal)
         }
         
@@ -48,11 +52,11 @@ class SearchTableViewCell: UITableViewCell {
         guard let classObject = classObject else {return}
         
         if isAdded == false {
-            classController?.updateClassType(with: classObject, classType: ClassType.clientClasses)
+            classController.updateClassType(with: classObject, classType: ClassType.clientClasses)
             isAdded = true
             setViews()
         } else {
-            classController?.updateClassType(with: classObject)
+            classController.updateClassType(with: classObject)
             isAdded = false
             setViews()
         }

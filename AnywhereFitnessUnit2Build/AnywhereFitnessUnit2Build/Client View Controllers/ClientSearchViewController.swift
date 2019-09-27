@@ -25,8 +25,8 @@ class ClientSearchViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     
-    var classController = ClassController()
-    var userController: UserController?
+    var classController = ClassController.shared
+    var userController = UserController.shared
     
     lazy var fetch: NSFetchedResultsController<Class> = {
         
@@ -91,7 +91,7 @@ class ClientSearchViewController: UIViewController {
     }
     
     @IBAction func addClassButtonTapped(_ sender: UIButton) {
-        guard let classObjects = classController.classObject, let trainer = userController?.trainer else {return}
+        guard let classObjects = classController.classObject, let trainer = userController.trainer else {return}
         
         let classObject = classObjects[0]
         
@@ -104,7 +104,7 @@ class ClientSearchViewController: UIViewController {
             else {return}
             
         let classO = Class(name: name, category: category, date: date, duration: duration, intensityLevel: intensity, location: location)!
-        classController.updateClass(with: classO, name: name, location: location, intesityLevel: intensity, duration: duration, date: date, category: category, trainer: trainer)
+        classController.updateClass(with: classO, name: name, location: location, intesityLevel: intensity, duration: duration, classType: ClassType.clientClasses, date: date, category: category, trainer: trainer)
     }
     
 

@@ -10,8 +10,8 @@ import UIKit
 
 class TrainerCreateClassViewController: UIViewController {
     
-    var classController: ClassController?
-    var userController: UserController?
+    var classController = ClassController.shared
+    var userController = UserController.shared
     
     var classObject: Class? {
         didSet {
@@ -62,12 +62,13 @@ class TrainerCreateClassViewController: UIViewController {
     private func setViews() {
         
         guard let classObject = classObject else {return}
-            
+        
         DispatchQueue.main.async {
         
+            guard let date = classObject.date else {return}
             self.classNameTextField.text = classObject.name
             self.categoryTextField.text = classObject.category
-            self.dateTextField.text = "\(String(describing: classObject.date))"
+            self.dateTextField.text = "\(date))"
             self.durationTextField.text = classObject.duration
             self.intensityTextField.text = classObject.intensityLevel
             self.locationTextField.text = classObject.location
@@ -87,11 +88,11 @@ class TrainerCreateClassViewController: UIViewController {
             else {return}
         
         if let classObject = classObject {
-           guard let user = userController?.trainer else {return}
-            classController?.updateClass(with: classObject, name: name, location: location, intesityLevel: intesity, duration: duration, date: date, category: category, trainer: user)
+           guard let user = userController.trainer else {return}
+            classController.updateClass(with: classObject, name: name, location: location, intesityLevel: intesity, duration: duration, classType: ClassType.trainerClasses, date: date, category: category, trainer: user)
         } else {
-            guard let user = userController?.trainer else {return}
-            classController?.createClass(with: name, location: location, intensityLevel: intesity, duration: duration, date: date, category: category, classType: ClassType.clientClasses, trainer: user)
+            guard let user = userController.trainer else {return}
+            classController.createClass(with: name, location: location, intensityLevel: intesity, duration: duration, date: date, category: category, classType: ClassType.trainerClasses, trainer: user)
             
         }
         self.dismiss(animated: true, completion: nil)

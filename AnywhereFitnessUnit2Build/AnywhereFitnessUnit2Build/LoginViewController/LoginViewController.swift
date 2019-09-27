@@ -32,7 +32,7 @@ class LoginViewController: UIViewController {
         
         view.backgroundColor = .white
         
-       
+        passwordTextField.isSecureTextEntry = true
         loginRegisterButton.setTitle("LOGIN", for: .normal)
         loginRegisterButton.setTitleColor(.white, for: .normal)
         loginRegisterButton.backgroundColor = #colorLiteral(red: 0.1719937623, green: 0.799302876, blue: 0.4432982504, alpha: 1)
