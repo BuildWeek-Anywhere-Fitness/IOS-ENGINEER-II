@@ -7,43 +7,78 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		386C2D0E233DE07B00C0391E /* ClientHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386C2D0D233DE07B00C0391E /* ClientHomeTableViewCell.swift */; };
+		386C2D10233DE74D00C0391E /* TrainerHomeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 386C2D0F233DE74D00C0391E /* TrainerHomeTableViewCell.swift */; };
+		38A5CF31233A741D00A8F66F /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF30233A741D00A8F66F /* SearchTableViewCell.swift */; };
+		38A5CF34233AA8CB00A8F66F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF33233AA8CB00A8F66F /* LoginViewController.swift */; };
+		38A5CF37233AADA000A8F66F /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF36233AADA000A8F66F /* KeychainItemAccessibility.swift */; };
+		38A5CF39233AADF500A8F66F /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF38233AADF500A8F66F /* KeychainWrapper.swift */; };
+		38A5CF43233B427800A8F66F /* ClassList+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38A5CF42233B427800A8F66F /* ClassList+Convenience.swift */; };
 		38B7E2B823393CC000327162 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E2B723393CC000327162 /* AppDelegate.swift */; };
 		38B7E2BD23393CC000327162 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E2BB23393CC000327162 /* Main.storyboard */; };
 		38B7E2BF23393CC100327162 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E2BE23393CC100327162 /* Assets.xcassets */; };
 		38B7E2C223393CC100327162 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E2C023393CC100327162 /* LaunchScreen.storyboard */; };
-		38B7E30E23393F1600327162 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E30D23393F1600327162 /* CoreDataStack.swift */; };
-		38B7E31223393F4100327162 /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E30F23393F4100327162 /* ClientViewController.swift */; };
-		38B7E31323393F4100327162 /* ClientClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E31023393F4100327162 /* ClientClassDetailViewController.swift */; };
-		38B7E31423393F4100327162 /* ClientSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E31123393F4100327162 /* ClientSearchViewController.swift */; };
-		38B7E31823393F5E00327162 /* TrainerClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E31523393F5D00327162 /* TrainerClassDetailViewController.swift */; };
-		38B7E31923393F5E00327162 /* TrainerCreateClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E31623393F5D00327162 /* TrainerCreateClassViewController.swift */; };
-		38B7E31A23393F5E00327162 /* TrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E31723393F5E00327162 /* TrainerViewController.swift */; };
 		38B7E31D23393FD500327162 /* ClientTrainerClass.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E31B23393FD500327162 /* ClientTrainerClass.xcdatamodeld */; };
 		38B7E31F2339597700327162 /* Class+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E31E2339597700327162 /* Class+Convenience.swift */; };
 		38B7E3212339598400327162 /* ClassRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E3202339598400327162 /* ClassRepresentation.swift */; };
 		38B7E3232339599700327162 /* TrainerRepresentatation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E3222339599700327162 /* TrainerRepresentatation.swift */; };
 		38B7E325233959B900327162 /* ClientRepresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E324233959B900327162 /* ClientRepresentation.swift */; };
+		38B7E32C2339712600327162 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E32B2339712600327162 /* CoreDataStack.swift */; };
+		38B7E3302339715E00327162 /* ClientSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E32D2339715E00327162 /* ClientSearchViewController.swift */; };
+		38B7E3312339715E00327162 /* ClientViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E32E2339715E00327162 /* ClientViewController.swift */; };
+		38B7E3322339715E00327162 /* ClientClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E32F2339715E00327162 /* ClientClassDetailViewController.swift */; };
+		38B7E3362339716D00327162 /* TrainerCreateClassViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E3332339716D00327162 /* TrainerCreateClassViewController.swift */; };
+		38B7E3372339716D00327162 /* TrainerClassDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E3342339716D00327162 /* TrainerClassDetailViewController.swift */; };
+		38B7E3382339716D00327162 /* TrainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B7E3352339716D00327162 /* TrainerViewController.swift */; };
+		38B7E33B2339935F00327162 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E3392339935F00327162 /* Login.storyboard */; };
+		38B7E33D2339937D00327162 /* ClientSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E33C2339937D00327162 /* ClientSearch.storyboard */; };
+		38B7E3402339939F00327162 /* ClientClassDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E33E2339939F00327162 /* ClientClassDetail.storyboard */; };
+		38B7E342233993C100327162 /* TrainerClassDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E341233993C100327162 /* TrainerClassDetail.storyboard */; };
+		38B7E3452339944400327162 /* TrainerHome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 38B7E3432339944400327162 /* TrainerHome.storyboard */; };
+		F59CEA2B233984460090D819 /* ClassController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F59CEA2A233984460090D819 /* ClassController.swift */; };
+		F5B546B0233A7EEE001FA79A /* UserController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B546AF233A7EEE001FA79A /* UserController.swift */; };
+		F5B546B2233A8971001FA79A /* Client+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B546B1233A8971001FA79A /* Client+Convenience.swift */; };
+		F5B546B4233A897A001FA79A /* Trainer+Convenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5B546B3233A897A001FA79A /* Trainer+Convenience.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		386C2D0D233DE07B00C0391E /* ClientHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientHomeTableViewCell.swift; sourceTree = "<group>"; };
+		386C2D0F233DE74D00C0391E /* TrainerHomeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerHomeTableViewCell.swift; sourceTree = "<group>"; };
+		38A5CF30233A741D00A8F66F /* SearchTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		38A5CF33233AA8CB00A8F66F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		38A5CF36233AADA000A8F66F /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		38A5CF38233AADF500A8F66F /* KeychainWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
+		38A5CF41233B41E400A8F66F /* ClientTrainerClass+ClassList.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ClientTrainerClass+ClassList.xcdatamodel"; sourceTree = "<group>"; };
+		38A5CF42233B427800A8F66F /* ClassList+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ClassList+Convenience.swift"; sourceTree = "<group>"; };
+		38A5CF44233BC2FE00A8F66F /* ClientTrainerClass+ClassType.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ClientTrainerClass+ClassType.xcdatamodel"; sourceTree = "<group>"; };
 		38B7E2B423393CC000327162 /* AnywhereFitnessUnit2Build.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnywhereFitnessUnit2Build.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		38B7E2B723393CC000327162 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		38B7E2BC23393CC000327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		38B7E2BE23393CC100327162 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		38B7E2C123393CC100327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		38B7E2C323393CC100327162 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		38B7E30D23393F1600327162 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreDataStack.swift; path = ../../../../AnywhereFitness/AnywhereFitness/Helpers/CoreDataStack.swift; sourceTree = "<group>"; };
-		38B7E30F23393F4100327162 /* ClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientViewController.swift; path = "../../../../AnywhereFitness/AnywhereFitness/Client View Controllers/ClientViewController.swift"; sourceTree = "<group>"; };
-		38B7E31023393F4100327162 /* ClientClassDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientClassDetailViewController.swift; path = "../../../../AnywhereFitness/AnywhereFitness/Client View Controllers/ClientClassDetailViewController.swift"; sourceTree = "<group>"; };
-		38B7E31123393F4100327162 /* ClientSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ClientSearchViewController.swift; path = "../../../../AnywhereFitness/AnywhereFitness/Client View Controllers/ClientSearchViewController.swift"; sourceTree = "<group>"; };
-		38B7E31523393F5D00327162 /* TrainerClassDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrainerClassDetailViewController.swift; path = "../../../../AnywhereFitness/AnywhereFitness/Trainer View Controllers/TrainerClassDetailViewController.swift"; sourceTree = "<group>"; };
-		38B7E31623393F5D00327162 /* TrainerCreateClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrainerCreateClassViewController.swift; path = "../../../../AnywhereFitness/AnywhereFitness/Trainer View Controllers/TrainerCreateClassViewController.swift"; sourceTree = "<group>"; };
-		38B7E31723393F5E00327162 /* TrainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TrainerViewController.swift; path = "../../../../AnywhereFitness/AnywhereFitness/Trainer View Controllers/TrainerViewController.swift"; sourceTree = "<group>"; };
 		38B7E31C23393FD500327162 /* ClientTrainerClass.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = ClientTrainerClass.xcdatamodel; sourceTree = "<group>"; };
 		38B7E31E2339597700327162 /* Class+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Class+Convenience.swift"; sourceTree = "<group>"; };
 		38B7E3202339598400327162 /* ClassRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRepresentation.swift; sourceTree = "<group>"; };
 		38B7E3222339599700327162 /* TrainerRepresentatation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainerRepresentatation.swift; sourceTree = "<group>"; };
 		38B7E324233959B900327162 /* ClientRepresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClientRepresentation.swift; sourceTree = "<group>"; };
+		38B7E32B2339712600327162 /* CoreDataStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
+		38B7E32D2339715E00327162 /* ClientSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientSearchViewController.swift; sourceTree = "<group>"; };
+		38B7E32E2339715E00327162 /* ClientViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientViewController.swift; sourceTree = "<group>"; };
+		38B7E32F2339715E00327162 /* ClientClassDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ClientClassDetailViewController.swift; sourceTree = "<group>"; };
+		38B7E3332339716D00327162 /* TrainerCreateClassViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerCreateClassViewController.swift; sourceTree = "<group>"; };
+		38B7E3342339716D00327162 /* TrainerClassDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerClassDetailViewController.swift; sourceTree = "<group>"; };
+		38B7E3352339716D00327162 /* TrainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainerViewController.swift; sourceTree = "<group>"; };
+		38B7E33A2339935F00327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AnywhereFitnessUnit2Build/Storyboard/Base.lproj/Login.storyboard; sourceTree = "<group>"; };
+		38B7E33C2339937D00327162 /* ClientSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ClientSearch.storyboard; sourceTree = "<group>"; };
+		38B7E33F2339939F00327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AnywhereFitnessUnit2Build/Storyboard/Base.lproj/ClientClassDetail.storyboard; sourceTree = "<group>"; };
+		38B7E341233993C100327162 /* TrainerClassDetail.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = TrainerClassDetail.storyboard; sourceTree = "<group>"; };
+		38B7E3442339944400327162 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = AnywhereFitnessUnit2Build/Storyboard/Base.lproj/TrainerHome.storyboard; sourceTree = "<group>"; };
+		38D5496B233C7457001E76A7 /* ClientTrainerClass+ClassType 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "ClientTrainerClass+ClassType 2.xcdatamodel"; sourceTree = "<group>"; };
+		F59CEA2A233984460090D819 /* ClassController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassController.swift; sourceTree = "<group>"; };
+		F5B546AF233A7EEE001FA79A /* UserController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserController.swift; sourceTree = "<group>"; };
+		F5B546B1233A8971001FA79A /* Client+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Client+Convenience.swift"; sourceTree = "<group>"; };
+		F5B546B3233A897A001FA79A /* Trainer+Convenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Trainer+Convenience.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +92,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		38A5CF32233AA89A00A8F66F /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				38A5CF33233AA8CB00A8F66F /* LoginViewController.swift */,
+			);
+			path = LoginViewController;
+			sourceTree = "<group>";
+		};
 		38B7E2AB23393CC000327162 = {
 			isa = PBXGroup;
 			children = (
@@ -77,13 +120,14 @@
 			isa = PBXGroup;
 			children = (
 				38B7E30C23393EEF00327162 /* Models */,
-				38B7E30B23393EE300327162 /* Model Controllers */,
-				38B7E30A23393ED000327162 /* Helpers */,
-				38B7E30923393EB800327162 /* Custom Views */,
-				38B7E30823393E9200327162 /* Trainer View Controllers */,
-				38B7E30723393E8800327162 /* Client View Controllers */,
-				38B7E2FC23393DAE00327162 /* Resources */,
+				38B7E329233970B200327162 /* Model Controllers */,
+				38B7E3262339708200327162 /* Helpers */,
+				38A5CF32233AA89A00A8F66F /* LoginViewController */,
+				38B7E3272339709300327162 /* Client View Controllers */,
+				38B7E3282339709F00327162 /* Trainer View Controllers */,
+				38B7E32A233970C000327162 /* Custom Views */,
 				38B7E2FB23393D9700327162 /* Storyboard */,
+				38B7E2FC23393DAE00327162 /* Resources */,
 			);
 			path = AnywhereFitnessUnit2Build;
 			sourceTree = "<group>";
@@ -91,7 +135,12 @@
 		38B7E2FB23393D9700327162 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				38B7E3392339935F00327162 /* Login.storyboard */,
 				38B7E2BB23393CC000327162 /* Main.storyboard */,
+				38B7E33C2339937D00327162 /* ClientSearch.storyboard */,
+				38B7E33E2339939F00327162 /* ClientClassDetail.storyboard */,
+				38B7E3432339944400327162 /* TrainerHome.storyboard */,
+				38B7E341233993C100327162 /* TrainerClassDetail.storyboard */,
 				38B7E2C023393CC100327162 /* LaunchScreen.storyboard */,
 			);
 			path = Storyboard;
@@ -107,58 +156,68 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		38B7E30723393E8800327162 /* Client View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				38B7E31023393F4100327162 /* ClientClassDetailViewController.swift */,
-				38B7E31123393F4100327162 /* ClientSearchViewController.swift */,
-				38B7E30F23393F4100327162 /* ClientViewController.swift */,
-			);
-			path = "Client View Controllers";
-			sourceTree = "<group>";
-		};
-		38B7E30823393E9200327162 /* Trainer View Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				38B7E31523393F5D00327162 /* TrainerClassDetailViewController.swift */,
-				38B7E31623393F5D00327162 /* TrainerCreateClassViewController.swift */,
-				38B7E31723393F5E00327162 /* TrainerViewController.swift */,
-			);
-			path = "Trainer View Controllers";
-			sourceTree = "<group>";
-		};
-		38B7E30923393EB800327162 /* Custom Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Custom Views";
-			sourceTree = "<group>";
-		};
-		38B7E30A23393ED000327162 /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				38B7E30D23393F1600327162 /* CoreDataStack.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
-		38B7E30B23393EE300327162 /* Model Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Model Controllers";
-			sourceTree = "<group>";
-		};
 		38B7E30C23393EEF00327162 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				38B7E31B23393FD500327162 /* ClientTrainerClass.xcdatamodeld */,
 				38B7E31E2339597700327162 /* Class+Convenience.swift */,
+				38A5CF42233B427800A8F66F /* ClassList+Convenience.swift */,
 				38B7E3202339598400327162 /* ClassRepresentation.swift */,
 				38B7E324233959B900327162 /* ClientRepresentation.swift */,
 				38B7E3222339599700327162 /* TrainerRepresentatation.swift */,
+				F5B546B1233A8971001FA79A /* Client+Convenience.swift */,
+				F5B546B3233A897A001FA79A /* Trainer+Convenience.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		38B7E3262339708200327162 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				38B7E32B2339712600327162 /* CoreDataStack.swift */,
+				38A5CF36233AADA000A8F66F /* KeychainItemAccessibility.swift */,
+				38A5CF38233AADF500A8F66F /* KeychainWrapper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		38B7E3272339709300327162 /* Client View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				38B7E32F2339715E00327162 /* ClientClassDetailViewController.swift */,
+				38B7E32D2339715E00327162 /* ClientSearchViewController.swift */,
+				38B7E32E2339715E00327162 /* ClientViewController.swift */,
+			);
+			path = "Client View Controllers";
+			sourceTree = "<group>";
+		};
+		38B7E3282339709F00327162 /* Trainer View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				38B7E3342339716D00327162 /* TrainerClassDetailViewController.swift */,
+				38B7E3332339716D00327162 /* TrainerCreateClassViewController.swift */,
+				38B7E3352339716D00327162 /* TrainerViewController.swift */,
+			);
+			path = "Trainer View Controllers";
+			sourceTree = "<group>";
+		};
+		38B7E329233970B200327162 /* Model Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				F59CEA2A233984460090D819 /* ClassController.swift */,
+				F5B546AF233A7EEE001FA79A /* UserController.swift */,
+			);
+			path = "Model Controllers";
+			sourceTree = "<group>";
+		};
+		38B7E32A233970C000327162 /* Custom Views */ = {
+			isa = PBXGroup;
+			children = (
+				38A5CF30233A741D00A8F66F /* SearchTableViewCell.swift */,
+				386C2D0D233DE07B00C0391E /* ClientHomeTableViewCell.swift */,
+				386C2D0F233DE74D00C0391E /* TrainerHomeTableViewCell.swift */,
+			);
+			path = "Custom Views";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +278,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38B7E33D2339937D00327162 /* ClientSearch.storyboard in Resources */,
+				38B7E3402339939F00327162 /* ClientClassDetail.storyboard in Resources */,
+				38B7E33B2339935F00327162 /* Login.storyboard in Resources */,
+				38B7E3452339944400327162 /* TrainerHome.storyboard in Resources */,
+				38B7E342233993C100327162 /* TrainerClassDetail.storyboard in Resources */,
 				38B7E2C223393CC100327162 /* LaunchScreen.storyboard in Resources */,
 				38B7E2BF23393CC100327162 /* Assets.xcassets in Resources */,
 				38B7E2BD23393CC000327162 /* Main.storyboard in Resources */,
@@ -232,18 +296,29 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				38A5CF43233B427800A8F66F /* ClassList+Convenience.swift in Sources */,
+				38A5CF31233A741D00A8F66F /* SearchTableViewCell.swift in Sources */,
+				38B7E32C2339712600327162 /* CoreDataStack.swift in Sources */,
 				38B7E31F2339597700327162 /* Class+Convenience.swift in Sources */,
-				38B7E31823393F5E00327162 /* TrainerClassDetailViewController.swift in Sources */,
-				38B7E31423393F4100327162 /* ClientSearchViewController.swift in Sources */,
+				38A5CF39233AADF500A8F66F /* KeychainWrapper.swift in Sources */,
 				38B7E325233959B900327162 /* ClientRepresentation.swift in Sources */,
-				38B7E31A23393F5E00327162 /* TrainerViewController.swift in Sources */,
+				38A5CF34233AA8CB00A8F66F /* LoginViewController.swift in Sources */,
+				38B7E3322339715E00327162 /* ClientClassDetailViewController.swift in Sources */,
 				38B7E2B823393CC000327162 /* AppDelegate.swift in Sources */,
 				38B7E3232339599700327162 /* TrainerRepresentatation.swift in Sources */,
-				38B7E30E23393F1600327162 /* CoreDataStack.swift in Sources */,
+				386C2D10233DE74D00C0391E /* TrainerHomeTableViewCell.swift in Sources */,
+				F59CEA2B233984460090D819 /* ClassController.swift in Sources */,
+				38B7E3372339716D00327162 /* TrainerClassDetailViewController.swift in Sources */,
+				38B7E3312339715E00327162 /* ClientViewController.swift in Sources */,
+				386C2D0E233DE07B00C0391E /* ClientHomeTableViewCell.swift in Sources */,
+				38B7E3382339716D00327162 /* TrainerViewController.swift in Sources */,
+				F5B546B4233A897A001FA79A /* Trainer+Convenience.swift in Sources */,
+				38A5CF37233AADA000A8F66F /* KeychainItemAccessibility.swift in Sources */,
+				F5B546B2233A8971001FA79A /* Client+Convenience.swift in Sources */,
 				38B7E3212339598400327162 /* ClassRepresentation.swift in Sources */,
-				38B7E31223393F4100327162 /* ClientViewController.swift in Sources */,
-				38B7E31923393F5E00327162 /* TrainerCreateClassViewController.swift in Sources */,
-				38B7E31323393F4100327162 /* ClientClassDetailViewController.swift in Sources */,
+				38B7E3302339715E00327162 /* ClientSearchViewController.swift in Sources */,
+				F5B546B0233A7EEE001FA79A /* UserController.swift in Sources */,
+				38B7E3362339716D00327162 /* TrainerCreateClassViewController.swift in Sources */,
 				38B7E31D23393FD500327162 /* ClientTrainerClass.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +340,30 @@
 				38B7E2C123393CC100327162 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		38B7E3392339935F00327162 /* Login.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38B7E33A2339935F00327162 /* Base */,
+			);
+			name = Login.storyboard;
+			sourceTree = "<group>";
+		};
+		38B7E33E2339939F00327162 /* ClientClassDetail.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38B7E33F2339939F00327162 /* Base */,
+			);
+			name = ClientClassDetail.storyboard;
+			sourceTree = "<group>";
+		};
+		38B7E3432339944400327162 /* TrainerHome.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				38B7E3442339944400327162 /* Base */,
+			);
+			name = TrainerHome.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -449,9 +548,12 @@
 		38B7E31B23393FD500327162 /* ClientTrainerClass.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				38D5496B233C7457001E76A7 /* ClientTrainerClass+ClassType 2.xcdatamodel */,
+				38A5CF44233BC2FE00A8F66F /* ClientTrainerClass+ClassType.xcdatamodel */,
+				38A5CF41233B41E400A8F66F /* ClientTrainerClass+ClassList.xcdatamodel */,
 				38B7E31C23393FD500327162 /* ClientTrainerClass.xcdatamodel */,
 			);
-			currentVersion = 38B7E31C23393FD500327162 /* ClientTrainerClass.xcdatamodel */;
+			currentVersion = 38D5496B233C7457001E76A7 /* ClientTrainerClass+ClassType 2.xcdatamodel */;
 			path = ClientTrainerClass.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

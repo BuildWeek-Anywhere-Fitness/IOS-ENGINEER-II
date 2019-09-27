@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Class" representedClassName="Class" syncable="YES" codeGenerationType="class">
         <attribute name="category" optional="YES" attributeType="String"/>
+        <attribute name="classType" optional="YES" attributeType="String"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="duration" optional="YES" attributeType="String"/>
         <attribute name="identifier" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
@@ -22,7 +23,7 @@
         <attribute name="username" optional="YES" attributeType="String"/>
     </entity>
     <elements>
-        <element name="Class" positionX="27" positionY="72" width="128" height="148"/>
+        <element name="Class" positionX="27" positionY="72" width="128" height="163"/>
         <element name="Client" positionX="-36" positionY="9" width="128" height="105"/>
         <element name="Trainer" positionX="0" positionY="45" width="128" height="105"/>
     </elements>
