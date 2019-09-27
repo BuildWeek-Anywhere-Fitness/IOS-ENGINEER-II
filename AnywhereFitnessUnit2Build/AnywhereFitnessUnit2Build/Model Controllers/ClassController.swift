@@ -14,6 +14,8 @@ class ClassController {
     
     var classObject: [ClassRepresentation]?
     
+    static let shared = ClassController()
+    
     var secondsFromGMT: Int { return TimeZone.current.secondsFromGMT() }
     
     var dateFormatter: DateFormatter {
@@ -35,6 +37,7 @@ class ClassController {
         request.httpMethod = HTTPMethod.get.rawValue
         let token: String? = KeychainWrapper.standard.string(forKey: "token")
         
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         if let token = token {
             request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         }
@@ -127,7 +130,7 @@ class ClassController {
         //
         //                CoreDataStack.shared.save(context: context)
         //            } catch {
-        //                NSLog("Error decoding receipt and saving receipt: \(error)")
+        //                NSLog("Error decoding class and saving class: \(error)")
         //            }
         //
         //            completion()
@@ -170,6 +173,7 @@ class ClassController {
         
         var request = URLRequest(url: requestURL)
         request.httpMethod = HTTPMethod.post.rawValue
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         let token: String? = KeychainWrapper.standard.string(forKey: "token")
         
         if let token = token {
@@ -185,8 +189,8 @@ class ClassController {
         
         do {
             let encoder = JSONEncoder()
-            request.httpBody = try encoder.encode(classRepresentation)
             encoder.dateEncodingStrategy = .formatted(dateFormatter)
+            request.httpBody = try encoder.encode(classRepresentation)
         } catch {
             NSLog("Error encoding task representation: \(error)")
             completion()
@@ -331,8 +335,9 @@ class ClassController {
     
     // UPDATE
     
-    func updateClass(with classObject: Class, name: String, location: String, intesityLevel: Intensity, duration: Duration, date: Date, category: Category, trainer: TrainerRepresentation) {
+    func updateClass(with classObject: Class, name: String, location: String, intesityLevel: Intensity, duration: Duration, classType: ClassType, date: Date, category: Category, trainer: TrainerRepresentation) {
         
+        classObject.classType = classType.rawValue
         classObject.name = name
         classObject.location = location
         classObject.intensityLevel = intesityLevel.rawValue

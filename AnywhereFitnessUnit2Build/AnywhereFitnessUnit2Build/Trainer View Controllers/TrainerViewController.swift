@@ -11,9 +11,9 @@ import CoreData
 
 class TrainerViewController: UIViewController {
     
-    let classController = ClassController()
+    let classController = ClassController.shared
     
-    var userController: UserController?
+    var userController = UserController.shared
     
     var classType = ClassType.trainerClasses
     

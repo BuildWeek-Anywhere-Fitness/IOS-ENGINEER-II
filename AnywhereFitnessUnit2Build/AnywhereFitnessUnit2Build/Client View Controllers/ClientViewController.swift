@@ -15,8 +15,8 @@ class ClientViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var welcomeLabel: UILabel!
     
-    var classController = ClassController()
-    var userController: UserController?
+    var classController = ClassController.shared
+    var userController = UserController.shared
     
     var classType: ClassType = ClassType.clientClasses
     

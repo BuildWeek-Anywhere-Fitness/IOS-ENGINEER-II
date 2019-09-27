@@ -32,6 +32,8 @@ enum LoginType: String {
 
 class UserController {
     
+    static let shared = UserController()
+    
     var id: Int?
     var token: String?
     var client: ClientRepresentation?

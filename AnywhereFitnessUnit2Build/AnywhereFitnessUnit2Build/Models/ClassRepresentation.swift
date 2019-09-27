@@ -18,6 +18,7 @@ struct ClassRepresentation: Codable {
 	let category: String?
 	let identifier: Int?
     let instructorID: Int?
+    let maxSize: Int = 20
 		
 		enum CodingKeys: String, CodingKey {
 			case name = "name"
@@ -28,6 +29,7 @@ struct ClassRepresentation: Codable {
             case identifier = "id"
             case date = "starttime"
             case instructorID = "instructor_id"
+            case maxSize = "max_size"
 		}
 	
 }
